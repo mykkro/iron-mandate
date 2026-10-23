@@ -1,0 +1,18 @@
+# Local generation notes and temporary edit helpers
+*_PROMPTS.md
+.codex_apply*.py
+*-sources.json
+
+# Development captures (README images live in assets/screenshots/)
+assets/previews/
+preview-*.png
+
+# Local environment and Python cache
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db

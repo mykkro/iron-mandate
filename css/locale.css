@@ -1,0 +1,24 @@
+.language-switch{display:flex;gap:0;flex-shrink:0;align-items:center}
+.language-switch button{padding:7px 10px;font-size:11px;min-height:40px;box-shadow:none;background:#34392b;color:#d1d1b1;border:1px solid #78805a}
+.language-switch button[aria-pressed="true"]{background:#d5e448;color:#222b18}
+html[lang="cs"] .hero h1{font-size:70px}
+html[lang="cs"] .pilot{display:none}
+html[lang="cs"] .hand-zone .card h3{overflow-wrap:anywhere}
+@media(max-width:650px){
+ header{gap:10px}
+ .language-switch{margin-left:auto}
+ .language-switch button{min-height:44px;padding:6px 9px}
+ body.in-battle header{gap:5px}
+ body.in-battle .brand span{font-size:18px}
+ body.in-battle header nav{order:3;width:100%;flex:auto;justify-content:space-between}
+ body.in-battle nav button{font-size:12px}
+ html[lang="cs"] .hero h1{font-size:53px}
+ html[lang="cs"] .hand-zone .card h3{font-size:19px}
+ html[lang="cs"] #end{font-size:12px}
+ html[lang="cs"] .table-pile .pile-name{font-size:8px}
+ html[lang="cs"] .installed .card h3{font-size:14px}
+ html[lang="cs"] .installed .card>.portrait-inspect{font-size:10px}
+}
+
+.brand span{white-space:nowrap}
+@media(max-width:650px){body.in-battle .brand span{font-size:16px;letter-spacing:.5px}.brand span{font-size:22px;letter-spacing:1px}}

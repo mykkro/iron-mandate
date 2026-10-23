@@ -1,0 +1,105 @@
+.portrait-inspect{display:none}
+#card-inspector{width:min(92vw,390px);max-height:88dvh;padding:16px;overflow-y:auto;overscroll-behavior:contain}
+#card-inspector>.close{float:none;display:block;margin:0 0 10px auto;min-width:44px;min-height:44px}
+#card-inspector .card{width:100%;min-width:0;box-shadow:none;height:auto;transform:none;padding:14px}
+#card-inspector .card .art{height:130px}
+#card-inspector .card h3{font-size:27px}
+#card-inspector .card p{font-size:16px;min-height:0;display:block;line-height:1.6}
+#card-inspector .flavor{font-size:13px;display:block;min-height:0}
+#card-inspector .installed-output{font-size:15px;margin:12px 0;min-height:0}
+#card-inspector .card button{min-height:48px;font-size:15px;padding:10px}
+#card-inspector .machine-options{gap:10px}
+@media(max-width:650px){
+ body.in-battle main{padding:10px 8px 24px}
+ body.in-battle header{padding:10px 12px;gap:8px}
+ body.in-battle .brand{font-size:22px}
+ body.in-battle .brand span{font-size:20px}
+ body.in-battle .brand small{display:none}
+ body.in-battle header nav{width:auto;flex:1;justify-content:flex-end;gap:2px}
+ body.in-battle nav button{font-size:10px;min-height:44px;padding:6px}
+ body.in-battle #collection-count{display:none}
+ .battle-top{position:sticky;top:0;z-index:6;background:#faf2dcf5;backdrop-filter:blur(8px);padding:8px 4px 10px;margin:0;gap:7px;border-bottom:2px solid #39344933}
+ .battle-top>div:first-child{width:100%}
+ .battle-top h2{display:none}
+ .battle-top .eyebrow{font-size:10px;letter-spacing:.8px}
+ .battle-top .resources{display:grid;grid-template-columns:1fr 1fr 1.3fr;width:100%;gap:8px}
+ .battle-top .resource{padding:7px 10px;font-size:12px;box-shadow:0 2px 0 #393449}
+ .battle-top .resource b{font-size:21px}
+ #end{min-height:46px;font-size:14px;padding:8px}
+ .game-table{padding:7px;border-width:2px;margin-top:9px;border-radius:15px}
+ .opponent-side,.player-side{padding:10px;border-radius:12px}
+ .table-status{margin-bottom:9px}
+ .table-status h3{font-size:17px;max-width:210px;overflow-wrap:anywhere}
+ .hull-label{font-size:11px;flex-shrink:0}
+ .table-status .health{width:82px;height:10px;margin-top:5px}
+ .table-status .eyebrow{font-size:8px}
+ .opponent-layout{grid-template-columns:1fr 1fr;gap:9px}
+ .rival-rig{display:none}
+ .intent-zone .zone-label,.action-pile .zone-label{font-size:8px;margin-bottom:5px}
+ .intent-card,.past-action{min-height:75px;max-width:none;padding:7px;gap:3px;border-radius:8px;box-shadow:2px 2px 0 #393449;transform:none}
+ .intent-card .intent-icon,.past-action>span:first-child{display:none}
+ .intent-card h3{font-size:15px}
+ .intent-card b{font-size:14px}
+ .past-action{font-size:10px}
+ .shared-strip{gap:5px;padding:9px 3px}
+ .shared-strip>.table-hint{display:none}
+ .shared-strip .zone-label{font-size:8px}
+ .last-tactic{padding:5px 7px;font-size:11px;gap:5px;box-shadow:none;border-width:1px}
+ .last-tactic>span{display:none}
+ .player-layout{gap:10px;grid-template-columns:minmax(0,1fr)}
+ .table-machines{grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;padding:0 0 3px;gap:7px}
+ .machine-zone .zone-label,.crew-zone .zone-label{margin:0 0 7px}
+ .card-slot{min-height:144px;padding:5px;gap:3px}
+ .card-slot>span{font-size:25px}
+ .card-slot b{font-size:10px}
+ .card-slot small{font-size:9px}
+ .installed .card{padding:5px;border-radius:10px;box-shadow:2px 2px 0 #393449}
+ .installed .card .art{height:40px;border-width:1px}
+ .installed .card .card-icon{font-size:28px}
+ .installed .card .cost,.installed .card .type,.installed .machine-options{display:none}
+ .installed .card h3{font-size:12px;line-height:1.15;margin:5px 0;overflow-wrap:anywhere;min-height:28px}
+ .installed-output{font-size:9px;min-height:24px;line-height:1.3}
+ .installed .card>button[data-activate]{display:none}
+ .installed .card>.portrait-inspect{display:block;font-size:11px;min-height:44px;padding:5px 2px;margin-top:auto;width:100%;box-shadow:0 2px 0 #393449}
+ .crew-zone{order:1}
+ .table-crew{gap:7px}
+ .crew-mini,.crew-slot{min-height:48px;padding:6px;font-size:10px;border-radius:9px;gap:3px}
+ .crew-mini{display:grid;grid-template-columns:24px 1fr;text-align:left}
+ .crew-mini>span{font-size:23px;grid-row:span 2}
+ .crew-mini small{font-size:10px}
+ .crew-slot{flex-direction:row;font-size:17px}
+ .crew-slot small{font-size:9px}
+ .piles{order:2;flex-direction:row;gap:22px;justify-content:center;padding:7px 5px 2px}
+ .table-pile{width:104px;height:65px;min-height:44px;border-radius:8px;padding:5px;transform:none;box-shadow:2px -2px 0 #fff9e7,4px -4px 0 #393449}
+ .card-back-mark,.discard-symbol{font-size:22px}
+ .pile-face{gap:1px;font-size:8px}
+ .draw-pile .pile-face>span:last-child{display:none}
+ .pile-name{font-size:9px;padding:1px 4px;bottom:3px}
+ .discard-pile .pile-face{padding-bottom:13px}
+ .discard-pile .pile-face>span:last-child{display:none}
+ .hand-zone{padding:9px 6px 0;margin-top:10px;border-radius:12px}
+ .hand-heading{gap:3px}
+ .hand-heading .zone-label{font-size:10px;margin:0}
+ .hand-heading>span:last-child{font-size:10px}
+ .hand-zone .hand{gap:10px;padding:10px 3px 13px;scroll-snap-type:x proximity;scroll-padding:3px;overscroll-behavior-x:contain}
+ .hand-zone .card{width:140px;min-width:140px;padding:7px;scroll-snap-align:start;border-radius:11px}
+ .hand-zone .card:hover{transform:none}
+ .hand-zone .card .art{height:58px}
+ .hand-zone .card-icon{font-size:38px}
+ .hand-zone .card h3{font-size:17px;line-height:1.15;min-height:38px;margin:7px 0 4px}
+ .hand-zone .card p{font-size:12px;line-height:1.4;min-height:49px;margin:7px 0}
+ .hand-zone .card .flavor{display:none}
+ .hand-zone .card>button[data-play]{display:none}
+ .hand-zone .card>.portrait-inspect{display:block;min-height:44px;font-size:13px;margin-top:auto;padding:8px}
+ .table-bottom{margin:16px 5px 0}
+ #leave{min-height:44px}
+ #discard-view{padding:15px;width:95vw;max-height:88dvh}
+ #discard-view h2{font-size:27px}
+ #discard-view .collection-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ #discard-view .card{width:auto;min-width:0;padding:7px}
+ #discard-view .card h3{font-size:17px}
+ #discard-view .card .art{height:70px}
+ #discard-view .close{min-width:44px;min-height:44px}
+ #toast{bottom:calc(16px + env(safe-area-inset-bottom));font-size:13px}
+ button{touch-action:manipulation}
+}

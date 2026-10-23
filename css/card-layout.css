@@ -1,0 +1,78 @@
+.printed-card{padding:8px;gap:0}
+.card-corners{display:flex;justify-content:space-between;align-items:start;gap:4px;min-height:49px;margin-bottom:5px}
+.price-corner{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+.printed-card .cost.illustrated-cost{position:static;display:flex;min-width:40px;min-height:29px;padding:1px 3px;gap:1px;box-shadow:1px 2px 0 #222b17;border:1px solid #29321c}
+.printed-card .cost b{font-size:17px;line-height:1}
+.price-label,.effect-timing{font-family:'IBM Plex Mono',monospace;font-size:7px;font-weight:600;letter-spacing:.3px;line-height:1.4;color:#424c30;display:block;margin-top:4px}
+.card-yield{display:flex;flex-direction:column;align-items:flex-end;max-width:75%}
+.yield-values{display:flex;gap:3px;justify-content:flex-end;flex-wrap:wrap}
+.effect-badge{display:inline-flex;align-items:center;justify-content:center;min-height:29px;min-width:42px;padding:1px 3px;gap:1px;border:1px solid #354123;background:#a8b773 url('../assets/images/grit.svg');color:#233017;box-shadow:1px 2px 0 #29321d}
+.effect-badge b{font:800 19px 'Barlow Condensed',Impact,sans-serif;line-height:1}
+.effect-badge .resource-icon{width:23px;height:23px}
+.effect-power{background-color:#bfc46f}.effect-hull{background-color:#a0b49a}.effect-damage,.effect-loss{background-color:#c18464;color:#45231a;border-color:#643b28}
+.effect-timing{text-align:right;max-width:100%;white-space:normal}
+.damage-icon{position:relative;display:inline-flex;align-items:center;justify-content:center;line-height:1}.damage-icon>span{position:absolute;font-size:23px;color:#ebba90;text-shadow:1px 1px 0 #471d14;font-weight:bold}
+.printed-card .art{flex-shrink:0;height:110px}
+.printed-card h3{line-height:1.05;margin:9px 0 5px;min-height:44px}
+.printed-card .type{padding:5px 0;border-top:1px solid #615f43;border-bottom:1px solid #615f43;font-size:8px;margin-bottom:7px;min-height:22px}
+.rules-box{border:1px solid #817e5d;background:#d7d0b055;padding:7px;flex:1;margin-bottom:7px;min-height:94px}
+.printed-card .rules-box p{margin:0;font-size:11px;line-height:1.5;min-height:0}
+.activation-line{display:flex;align-items:center;flex-wrap:wrap;gap:4px;font-size:9px;font-weight:600;border-bottom:1px dashed #8d8b64;margin:0 0 7px;padding-bottom:6px;color:#3c4a2a}
+.activation-payment{display:inline-flex;align-items:center;gap:1px;font-size:12px}
+.activation-payment .resource-icon{width:19px;height:19px}
+.once-per-turn{width:100%;font-size:8px;font-weight:400;color:#5a6246}
+.printed-card .flavor{flex:none;min-height:39px;padding:6px 0;font-size:9px;margin-top:auto}
+.printed-card>button,.printed-card>.deck-controls{flex-shrink:0}
+.installed .printed-card .rules-box{display:none}
+.installed .printed-card .card-corners{min-height:45px;margin-bottom:4px}
+.installed .printed-card .card-yield{max-width:62%}
+.installed .printed-card h3{min-height:38px}
+.installed .printed-card .installed-output{min-height:30px}
+#card-inspector .printed-card .card-corners{min-height:61px;margin-bottom:8px}
+#card-inspector .printed-card .effect-badge{min-height:38px;min-width:55px;padding:2px 5px}
+#card-inspector .printed-card .effect-badge b{font-size:27px}
+#card-inspector .effect-badge .resource-icon{width:31px;height:31px}
+#card-inspector .printed-card .price-label,#card-inspector .effect-timing{font-size:10px}
+#card-inspector .printed-card h3{min-height:0;margin:12px 0 7px}
+#card-inspector .printed-card .rules-box{display:block;padding:12px;min-height:0;margin-top:7px}
+#card-inspector .printed-card .rules-box p{font-size:15px}
+#card-inspector .activation-line{font-size:13px;gap:7px}
+#card-inspector .activation-payment{font-size:16px}
+#card-inspector .once-per-turn{font-size:11px}
+#card-inspector .activation-payment .resource-icon{width:25px;height:25px}
+@media(max-width:650px){
+ .hand-zone .printed-card{width:155px;min-width:155px}
+ .hand-zone .printed-card .card-corners{min-height:46px}
+ .hand-zone .printed-card .art{height:76px}
+ .hand-zone .printed-card h3{min-height:38px;font-size:20px}
+ .hand-zone .printed-card .type{font-size:8px;min-height:20px;margin-bottom:6px;padding:4px 0}
+ .hand-zone .printed-card .rules-box{padding:6px;min-height:79px}
+ .hand-zone .printed-card .rules-box p{font-size:11px;line-height:1.4;min-height:0;margin:0}
+ .hand-zone .printed-card .activation-line{font-size:9px;margin-bottom:6px}
+ .hand-zone .printed-card .once-per-turn{font-size:8px}
+ .hand-zone .printed-card .flavor{display:none}
+ .price-label,.effect-timing{font-size:6px}
+ .printed-card .cost.illustrated-cost{min-width:35px;min-height:26px;padding:1px 2px}
+ .printed-card .cost b{font-size:15px}
+ .printed-card .illustrated-cost .resource-icon{width:20px;height:20px}
+ .effect-badge{min-width:35px;min-height:26px;padding:1px 2px}
+ .effect-badge b{font-size:17px}
+ .effect-badge .resource-icon{width:20px;height:20px}
+ .yield-values{gap:2px}
+ .installed .printed-card .cost.illustrated-cost{display:flex;min-width:29px;min-height:24px}
+ .installed .printed-card .cost b{font-size:14px}
+ .installed .printed-card .cost .resource-icon{width:17px;height:17px}
+ .installed .printed-card .effect-badge{min-width:30px;min-height:24px;padding:1px}
+ .installed .printed-card .effect-badge b{font-size:15px}
+ .installed .printed-card .effect-badge .resource-icon{width:17px;height:17px}
+ .installed .printed-card .price-label{display:none}
+ .installed .printed-card .card-corners{gap:2px;min-height:37px}
+ .installed .printed-card .effect-timing{font-size:6px;letter-spacing:0}
+ .installed .printed-card h3{min-height:32px;font-size:14px}
+ .installed .printed-card .card-yield{max-width:60%}
+ .installed .printed-card .type{display:none}
+ #discard-view .printed-card .art{height:80px}
+ #discard-view .printed-card h3{min-height:38px}
+ #discard-view .printed-card .rules-box{padding:5px}
+}
+.printed-card.crew .price-label,.printed-card.crew .effect-timing,.printed-card.crew .deck-controls>span{background:none;padding:0;border-radius:0;color:#424c30}

@@ -1,0 +1,150 @@
+/* Localize rendered text only: card IDs, save data, and rules remain language-neutral. */
+const CZECH={
+ 'Expedition':'Výprava','Workshop':'Dílna','Field guide':'Průvodce','DIGGING OUR OWN TROUBLE':'KOPÁME SI VLASTNÍ PRŮŠVIH','LICENSED TO MAKE A MESS':'POVOLENÍ DĚLAT BORDEL',
+ "PROSPECTOR'S HANDBOOK":'PŘÍRUČKA PROSPEKTORA','Welcome, future workplace incident.':'Vítej, budoucí pracovní úraze.',
+ 'Destroy the rival rig before it destroys yours. Each turn, draw to five cards and gain 3 Power. Ore carries over; Power refreshes each turn.':'Znič soupeřův stroj dřív, než zničí ten tvůj. Každé kolo si dober do pěti karet a získej 3 energii. Ruda zůstává do dalších kol; energie se každé kolo obnoví.',
+ ' machines with Ore. Each machine activates once per turn, beginning immediately. Drills produce Ore, boilers produce Power, and weapons damage the rival rig.':' stroje za rudu. Každý stroj můžeš aktivovat jednou za kolo, a to hned po postavení. Vrtáky těží rudu, kotle vyrábějí energii a zbraně poškozují soupeřův stroj.',
+ 'Your rig holds three machines and two crew. Upgrade machines for 3 Ore to improve their output. Scrap a machine for 1 Ore to free its slot. Crew bonuses stack.':'Na tvou plošinu se vejdou tři stroje a dva členové posádky. Vylepšení za 3 rudy zvýší výkon stroje. Sešrotováním získáš 1 rudu a uvolníš místo. Bonusy posádky se sčítají.',
+ 'Tactics cost Power and work immediately. End your turn to let the rival act. Your discard pile reshuffles when your draw pile runs out.':'Taktiky stojí energii a účinkují okamžitě. Ukončením kola pustíš na tah soupeře. Když dojdou karty v dobíracím balíčku, zamíchá se odhazovací hromádka.',
+ 'Win to choose a reward. In the Workshop, customize your 15-card deck, up to two copies per card. Progress saves in this browser.':'Za vítězství si vybereš odměnu. V dílně si sestav balíček s 15 kartami, nejvýše dvě kopie každé karty. Postup se ukládá v tomto prohlížeči.',
+ 'SMALL DECK. BIG DIG. QUESTIONABLE DECISIONS.':'MALÝ BALÍČEK. VELKÁ DÍRA. POCHYBNÁ ROZHODNUTÍ.', 'Dig weird.':'Kopej divně.','Build ':'Stav ','weirder.':'divněji.',
+ 'A cozy little expedition full of shiny rocks, goblin engineering, and machines that are probably fine. Make friends! Then launch socks at them.':'Výprava plná lesklých šutrů, gobliní techniky a strojů, které snad ještě drží pohromadě. Najdi si přátele! Pak po nich střílej ponožky.',
+ 'Begin expedition':'Vyrazit na výpravu','Continue expedition':'Pokračovat ve výpravě','probably safe':'snad bezpečné','Safety inspector':'Bezpečnostní dozor','PEBBLEBOTTOM · MOSTLY UP TO CODE':'ŠUTROV · PŘEDPISY SKORO DODRŽENY',
+ 'A PERFECTLY REASONABLE ROAD TRIP':'NAPROSTO ROZUMNÝ VÝLET','Meet the local weirdos':'Místní podivíni','rivals defeated':'poražení soupeři','victories':'vítězství','ROUTE CLEARED':'CESTA VOLNÁ','NEXT ENCOUNTER':'DALŠÍ SOUPEŘ','LOCKED':'ZAMČENO','HULL':'ODOLNOST','STARTER':'ZAČÁTEČNÍK','BOSS':'BOSS','RIVAL':'SOUPEŘ','Uncharted':'Neprobádáno','Challenge again':'Znovu vyzvat','Enter battle':'Do boje',
+ 'Mine Ore. Assemble machines.':'Těž rudu. Stav stroje.','Turn Power into firepower.':'Z energie udělej palebnou sílu.','Win cards. Build your own strategy.':'Vyhrávej karty. Vymysli vlastní strategii.',
+ 'THE WORKSHOP':'DÍLNA','Welcome to the junk drawer.':'Vítej v zásuvce se šrotem.','Build a 15-card deck. Up to two copies of each card.':'Sestav balíček s 15 kartami. Nejvýše dvě kopie každé karty.','Your deck is ready for the expedition.':'Balíček je připravený na výpravu.','Add or remove cards to bring your deck to exactly 15.':'Přidej nebo odeber karty, aby jich v balíčku bylo přesně 15.','Your current battle keeps the deck it started with.':'V rozehraném souboji zůstává původní balíček.',
+ 'Sir Drills-a-Lot':'Sir Vrtalot','Spicy Tea Kettle':'Pekelná konvice','The Peashooter':'Hrachomet','Sock Launcher 9000':'Ponožkomet 9000','Nibbles, Unlicensed':'Chroupal bez papírů','Grandma Hex':'Bába Kletba','DO NOT PUSH':'NEMAČKAT','Emergency Duct Tape':'Nouzová izolepa','Surprise Confetti':'Konfety s překvapením','Ooh, Shiny!':'Jé, to se leskne!','Haunted Toaster':'Strašidelný toustovač','Disco Death Ray':'Diskopaprsek smrti','Emotional Support Orb':'Koule psychické podpory','The Big Scooper':'Velká naběračka','Suspicious Soup':'Podezřelá polévka',
+ 'Activate: gain 2 Ore.':'Aktivace: získej 2 rudy.','Activate: gain 2 Power.':'Aktivace: získej 2 energii.','Spend 1 Power: deal 3 damage.':'Zaplať 1 energii: způsob 3 poškození.','Spend 2 Power: deal 6 damage.':'Zaplať 2 energii: způsob 6 poškození.','Machine upgrades cost 1 less Ore.':'Vylepšení strojů stojí o 1 rudu méně.','Repair 3 Hull whenever you upgrade.':'Při každém vylepšení obnov 3 odolnost.','Gain 3 Power. Take 1 damage.':'Získej 3 energii. Utrpíš 1 poškození.','Repair 6 Hull.':'Obnov 6 odolnost.','Deal 5 damage to the rival rig.':'Způsob soupeřovu stroji 5 poškození.','Gain 3 Ore.':'Získej 3 rudy.','Activate: gain 3 Power.':'Aktivace: získej 3 energii.','Spend 2 Power: deal 8 damage.':'Zaplať 2 energii: způsob 8 poškození.','Your first tactic each turn grants 1 Power.':'První taktika v každém kole přidá 1 energii.','Activate: gain 4 Ore.':'Aktivace: získej 4 rudy.','Repair 10 Hull and gain 1 Ore.':'Obnov 10 odolnost a získej 1 rudu.',
+ 'Knighted himself. Still counts.':'Pasoval se sám. I to se počítá.','Brew setting: industrial accident.':'Režim vaření: průmyslová havárie.','Eat your vegetables. At speed.':'Zelenina je zdravá. Ne v téhle rychlosti.','One sock always goes missing. Now we know.':'Jedna ponožka se vždycky ztratí. Už víme proč.','The license was holding him back.':'Ty papíry ho jen brzdily.','Curses, biscuits, sensible upgrades.':'Kletby, sušenky, rozumná vylepšení.','Someone labeled it. Nobody listened.':'Cedulka tam byla. Nikdo ji nečetl.','Structural integrity is a mindset.':'Pevnost konstrukce je stav mysli.','Every party needs a blast radius.':'Každá párty potřebuje tlakovou vlnu.','The official mining strategy.':'Oficiální těžební strategie.','Two slices and a minor haunting.':'Dva tousty a menší posednutí.','The last dance is mandatory.':'Poslední tanec je povinný.','You are doing amazing, probably.':'Jde ti to skvěle. Nejspíš.','For industrial amounts of ice cream.':'Na průmyslové množství zmrzliny.','Do not ask what the chunks are.':'Neptej se, co jsou ty kousky.',
+ 'Bert & His Bucket':'Bert a jeho kýbl','Professor Oops':'Profesor Ups','The Middle Manager':'Vedoucí směny','An Extremely Big Frog':'Extrémně velká žába','Pebblebottom':'Šutrov','Oopsie Alley':'Ulička průšvihů','Department of Clanking':'Oddělení rachotu','The Moist Beyond':'Vlhké záhrobí',
+ 'Claims every rock is his pet. You have upset Gerald, the pebble.':'Každý kámen je prý jeho mazlíček. Právě jsi urazil oblázek Geralda.','Has seven degrees. Six are burn-related. The seventh is in dance.':'Má sedm titulů. Šest za popáleniny. Sedmý z tance.','Would like a quick chat about your mining KPIs. Repairs 4 Hull every third turn.':'Chce si promluvit o tvých těžebních výkazech. Každé třetí kolo obnoví 4 odolnost.','Ancient. Magical. Unreasonably round. You are standing on its lunch.':'Prastará. Kouzelná. Nesmyslně kulatá. Stojíš jí na obědě.',
+ 'Bucket bonk':'Rána kýblem','Peer-reviewed explosion':'Odborně posouzený výbuch','Mandatory team building':'Povinný teambuilding','Cosmic ribbit':'Vesmírné kvák',
+ 'Welcome to the clank table.':'Vítej u stolu rachotu.','The wheels have left the chat.':'Kola opustila konverzaci.','RIVAL PLAY AREA':'SOUPEŘOVA PLOCHA','YOUR PLAY AREA':'TVOJE PLOCHA','The Probably Fine':'Snad to drží','Automated rival rig':'Automatický soupeřův stroj','NEXT ACTION':'PŘÍŠTÍ AKCE','COMPLETED ACTIONS':'PROVEDENÉ AKCE','Also repairs 4 Hull':'Také obnoví 4 odolnost','No bonks yet.':'Zatím žádná rána.','COMMON AREA · LAST TACTIC':'SPOLEČNÁ PLOCHA · POSLEDNÍ TAKTIKA','A suspiciously clean patch of table. Play a tactic to fix that.':'Podezřele čistý kus stolu. Zahraj taktiku a naprav to.','Rival damage grows every 3 turns.':'Poškození soupeře roste každá 3 kola.',
+ 'MACHINES':'STROJE','CREW':'POSÁDKA','Machine':'Stroj','Park nonsense here':'Sem zaparkuj šílenost','Crew seat':'Místo pro posádku','Snacks included':'Svačina v ceně','YOUR HAND':'TVOJE RUKA','Unused cards go to discard at turn end. Draw back to five.':'Na konci kola odhoď nepoužité karty. Dober si do pěti.','Draw pile':'Dobírací balíček','Discard pile':'Odhazovací hromádka','Nothing yet':'Zatím nic','End turn':'Ukončit kolo','Used this turn':'Použito v tomto kole','Activate':'Aktivovat','Upgraded':'Vylepšeno','Upgrade':'Vylepšit','Scrap':'Sešrotovat','Gain':'Získej','Build':'Postavit','Recruit':'Naverbovat','Play':'Zahrát','View card':'Zobrazit kartu','Manage':'Spravovat','Retreat to camp':'Zpět do tábora','Return to expedition':'Zpět na výpravu','Clank log':'Zápisník rachotu',
+ 'THE SLIGHTLY USED DEPARTMENT':'ODDĚLENÍ LEHCE POUŽITÉHO','Newest cards first. These reshuffle into your draw pile when it runs out.':'Nejnovější karty jsou nahoře. Až dojde dobírací balíček, tyhle se zamíchají a vrátí do hry.','No cards here yet. Give it a turn.':'Zatím tu nic není. Počkej jedno kolo.',
+ 'CERTIFIED FROG BOTHERER':'CERTIFIKOVANÝ OTRAVOVAČ ŽAB','VICTORY! NOBODY TELL THE INSURER.':'VÍTĚZSTVÍ! POJIŠŤOVNĚ ANI SLOVO.','Loot! Glorious, slightly sticky loot!':'Kořist! Nádherná, trochu lepkavá kořist!','Choose one card for your collection.':'Vyber si jednu kartu do sbírky.','Visit the Workshop to put it in your deck.':'V dílně ji můžeš přidat do balíčku.','Claim card':'Vzít kartu','Already own 2 · salvage':'Už máš 2 · náhradní odměna','The next stretch of the expedition is now open.':'Další úsek výpravy je otevřený.','You completed the first expedition. Experiment with your deck and challenge the crews again.':'První výprava je za tebou. Vyzkoušej jiný balíček a vyzvi soupeře znovu.',
+ 'Seatbelt? Optional. Snacks? Essential. You go first.':'Pásy? Volitelné. Svačina? Nezbytná. Začínáš.','The rig has become modern art. Your cards are safe.':'Ze stroje je moderní umění. Tvoje karty jsou v bezpečí.','The Foreman repaired 4 Hull.':'Vedoucí směny obnovil 4 odolnost.','Output increased by 2.':'Výkon se zvýšil o 2.',
+ 'Your current expedition is still underway.':'Současná výprava ještě neskončila.','Prepare a deck of exactly 15 cards first.':'Nejdřív sestav balíček s přesně 15 kartami.','Three machine slots are full. Scrap a machine to make room.':'Všechna tři místa pro stroje jsou plná. Uvolni místo sešrotováním.','Both crew slots are full.':'Obě místa pro posádku jsou obsazená.','Not enough Power.':'Nedostatek energie.','Browser storage is unavailable. Keep this tab open to retain progress.':'Úložiště prohlížeče není dostupné. Nech tuto kartu otevřenou, ať nepřijdeš o postup.',
+ 'Safety tip: lick no more than three mysterious crystals per shift.':'Bezpečnostní rada: za směnu olizuj nejvýše tři záhadné krystaly.','Your machine is making that noise because it believes in you.':'Ten stroj tak rachotí, protože ti věří.','Official inspection result: needs more googly eyes.':'Výsledek kontroly: potřebuje víc nalepovacích očí.','The frog accepts liability in the form of biscuits.':'Žába přijímá odpovědnost ve formě sušenek.',
+ 'Inspect discard pile':'Prohlédnout odhazovací hromádku','Close discard pile':'Zavřít odhazovací hromádku','Close card details':'Zavřít detail karty','Card details and actions':'Detail karty a akce','Close guide':'Zavřít průvodce','Iron Mandate home':'Iron Mandate – úvod','Ask the safety frog for advice':'Požádat bezpečnostní žábu o radu','A brass mining rig beneath shadowy mountains':'Mosazný těžební stroj pod temnými horami','Rival play area':'Soupeřova herní plocha','Your play area':'Tvoje herní plocha','Common play area':'Společná herní plocha','Your hand':'Tvoje ruka',
+ 'machine':'stroj','crew':'posádka','tactic':'taktika','Aethercraft':'Éterotechnika','Ore':'ruda','Power':'energie','Hull':'odolnost','damage':'poškození','Turn':'Kolo','TURN':'KOLO','cards':'karet','ore':'ruda','power':'energie'
+};
+Object.assign(CZECH,{
+ 'IRON MANDATE':'ŽELEZNÝ MANDÁT',
+ 'Iron Mandate home':'Železný mandát - úvod',
+ 'PRICE':'CENA',
+ 'PER USE':'ZA AKTIVACI',
+ 'ON PLAY':'PŘI ZAHRÁNÍ',
+ 'ON SCRAP':'PŘI ŠROTOVÁNÍ',
+ 'ON UPGRADE':'PŘI VYLEPŠENÍ',
+ 'FIRST TACTIC':'PRVNÍ TAKTIKA',
+ 'UPGRADES':'VYLEPŠENÍ',
+ 'ABILITY':'SCHOPNOST',
+ 'Free':'Zdarma',
+ 'Once per turn':'Jednou za kolo',
+ 'Sound settings':'Nastavení zvuku',
+ 'Sound settings (muted)':'Nastavení zvuku (vypnuto)',
+ 'Close sound settings':'Zavřít nastavení zvuku',
+ 'WORKSHOP ACOUSTICS':'AKUSTIKA DÍLNY',
+ 'Clanks, sparks & questionable noises':'Rachot, jiskry a podezřelé zvuky',
+ 'Sound effects':'Zvukové efekty',
+ 'Volume':'Hlasitost',
+ 'Short effects for resources, cards, machines and battle. Your setting is saved in this browser.':'Krátké efekty pro suroviny, karty, stroje a boj. Nastavení se ukládá v tomto prohlížeči.',
+ 'Damage':'Poškození',
+ 'Card reward':'Odměna za kartu',
+ 'Space garbageman. Whenever you scrap a machine, gain 1 extra Ore per Jegor.':'Vesmírný popelář. Za každý sešrotovaný stroj získáš 1 rudu navíc za každého Jegora.',
+ 'Jegor’s faithful robot. Whenever you scrap a machine, repair 2 Hull per Bobo.':'Jegorův věrný robot. Za každý sešrotovaný stroj obnov 2 body odolnosti za každého Boba.',
+ 'One civilization’s space junk is Jegor’s pension plan.':'Vesmírný odpad jedné civilizace je Jegorovo důchodové spoření.',
+ 'Loyalty: unlimited. Warranty: long expired.':'Věrnost: neomezená. Záruka: dávno prošlá.',
+ 'Meet the local weirdos':'Místní mimoni',
+ 'CARDS':'KARET',
+ 'Activate: gain 2 Power.':'Aktivace: získej 2 energie.',
+ 'Activate: gain 3 Power.':'Aktivace: získej 3 energie.',
+ 'Gain 3 Power. Take 1 damage.':'Získej 3 energie. Utrpíš 1 poškození.',
+ 'Repair 3 Hull whenever you upgrade.':'Při každém vylepšení obnov 3 body odolnosti.',
+ 'Repair 6 Hull.':'Obnov 6 bodů odolnosti.',
+ 'Repair 10 Hull and gain 1 Ore.':'Obnov 10 bodů odolnosti a získej 1 rudu.',
+ 'Also repairs 4 Hull':'Také obnoví 4 body odolnosti',
+ 'The Foreman repaired 4 Hull.':'Vedoucí směny obnovil 4 body odolnosti.',
+ 'Destroy the rival rig before it destroys yours. Each turn, draw to five cards and gain 3 Power. Ore carries over; Power refreshes each turn.':'Znič soupeřův stroj dřív, než zničí ten tvůj. Každé kolo si dober do pěti karet a získej 3 energie. Ruda zůstává do dalších kol; energie se každé kolo obnoví.',
+ 'Your rig holds three machines and two crew. Upgrade machines for 3 Ore to improve their output. Scrap a machine for 1 Ore to free its slot. Crew bonuses stack.':'Na tvou plošinu se vejdou tři stroje a dva členové posádky. Vylepšení za 3 rudy zvýší výkon stroje. Sešrotováním získáš 1 rudu a uvolníš místo. Bonusy posádky se sčítají.',
+ 'Would like a quick chat about your mining KPIs. Repairs 4 Hull every third turn.':'Chce si promluvit o tvých těžebních výkazech. Každé třetí kolo obnoví 4 body odolnosti.'
+});
+// Long phrases take precedence; token boundaries keep names and words intact.
+const escapeRegex=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const phrasePattern=new RegExp('(?<![\\p{L}])(?:'+Object.keys(CZECH).sort((a,b)=>b.length-a.length).map(escapeRegex).join('|')+')(?![\\p{L}])','gu');
+let language;try{language=localStorage.getItem('deepforge-language')}catch{}
+if(!['en','cs'].includes(language))language=navigator.language.toLowerCase().startsWith('cs')?'cs':'en';
+function translateText(value,heroTitle=false){
+ if(language!=='cs')return value;
+ if(heroTitle){
+  const title={'Dig weird.':'Šrot,','Build ':'pot a ','weirder.':'sláva.'};
+  if(Object.hasOwn(title,value))return title[value];
+ }
+ let text=value
+  .replace(/Activate: gain (\d+) (Ore|Power)\./g,(_,amount,kind)=>`Aktivace: získej ${amount} ${kind==='Ore'?(Number(amount)===1?'rudu':Number(amount)<5?'rudy':'rudy'):(Number(amount)===1?'energii':'energie')}.`)
+  .replace(/Spend (\d+) Power: deal (\d+) damage\./g,(_,cost,damage)=>`Zaplať ${cost} ${Number(cost)===1?'energii':'energie'}: způsob ${damage} poškození.`)
+  .replace(/You defeated the (.*?)\. /g,'Poražený soupeř: $1. ')
+  .replace(/Built (.*?)\./g,'Postaveno: $1.')
+  .replace(/Played (.*?)\./g,'Zahráno: $1.')
+  .replace(/(.*?) joined the crew\./g,'Nová posádka: $1.')
+  .replace(/(.*?) dealt (\d+) damage\./g,'$1: útok za $2 poškození.')
+  .replace(/Scrapped (.*?) for 1 Ore\./g,'Sešrotováno: $1. Získáš 1 rudu.')
+  .replace(/Scrapped (.*?)\. Ore \+(\d+)\./g,'Sešrotováno: $1. Ruda +$2.')
+  .replace(/Upgraded (.*?)\./g,'Vylepšeno: $1.')
+  .replace(/(.*?) added to your collection\./g,'Ve sbírce přibyla karta: $1.')
+  .replace(/You need (\d+) (Ore|Power)\./g,'Potřebuješ $1 $2.')
+  .replace(/An upgrade needs (\d+) Ore\./g,'Vylepšení stojí $1 rudy.')
+  .replace(/^(View(?! card$)|Manage|Remove|Add) /,m=>({'View ':'Zobrazit: ','Manage ':'Spravovat: ','Remove ':'Odebrat: ','Add ':'Přidat: '}[m]));
+ return text.replace(phrasePattern,m=>CZECH[m]).replace(/PEBBLEBOTTOM/g,'ŠUTROV').replace(/MOSTLY UP TO CODE/g,'PŘEDPISY SKORO DODRŽENY');
+}
+const localizedNodes=new WeakMap();
+const localizedAttributes=new WeakMap();
+function localizePage(){
+ document.documentElement.lang=language;
+ const sequence=document.querySelector('#opponent-sequence');
+ if(sequence&&sequence.dataset.locale!==language&&typeof refreshOpponentUI==='function'){
+  refreshOpponentUI();
+  if(document.querySelector('#opponent-history-dialog[open]'))showOpponentHistory();
+ }
+ const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+ while(walker.nextNode()){
+  const node=walker.currentNode;
+  if(node.parentElement.closest('script,style,svg,[data-language-control]'))continue;
+  const old=localizedNodes.get(node),source=old&&node.data===old.output?old.source:node.data,output=translateText(source,!!node.parentElement.closest('.hero h1'));
+  if(node.data!==output)node.data=output;
+  localizedNodes.set(node,{source,output});
+ }
+ document.querySelectorAll('[aria-label],[title]').forEach(el=>{
+  if(el.closest('[data-language-control]'))return;
+  const saved=localizedAttributes.get(el)||{};
+  for(const attr of ['aria-label','title'])if(el.hasAttribute(attr)){
+   const current=el.getAttribute(attr),old=saved[attr],source=old&&current===old.output?old.source:current,output=translateText(source);
+   if(current!==output)el.setAttribute(attr,output);
+   saved[attr]={source,output};
+  }
+  localizedAttributes.set(el,saved);
+ });
+ document.querySelectorAll('[data-lang]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.lang===language)));
+ document.title=language==='cs'?'Železný mandát':'Iron Mandate';
+}
+const languageControl=document.createElement('div');languageControl.className='language-switch';languageControl.dataset.languageControl='true';languageControl.setAttribute('role','group');languageControl.setAttribute('aria-label','Language / Jazyk');
+languageControl.innerHTML='<button data-lang="cs" lang="cs" aria-label="Česky">CS</button><button data-lang="en" lang="en" aria-label="English">EN</button>';
+document.querySelector('header').append(languageControl);
+languageControl.querySelectorAll('button').forEach(button=>button.onclick=()=>{
+ language=button.dataset.lang;
+ try{localStorage.setItem('deepforge-language',language)}catch{}
+ // Rebuild cloned card dialogs from canonical markup to avoid translating a translation.
+ document.querySelector('#card-inspector[open]')?.close();
+ localizePage();
+});
+const observer=new MutationObserver(()=>localizePage());
+observer.observe(document.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:['aria-label','title']});
+// A cloned mobile card already contains translated text; restore canonical text before cloning.
+const inspectCanonicalCard=inspectBattleCard;
+inspectBattleCard=function(zone,i){
+ const previous=language;language='en';localizePage();
+ inspectCanonicalCard(zone,i);
+ language=previous;localizePage();
+};
+localizePage();
