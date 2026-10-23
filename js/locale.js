@@ -70,11 +70,21 @@ Object.assign(CZECH,{
  'Your rig holds three machines and two crew. Upgrade machines for 3 Ore to improve their output. Scrap a machine for 1 Ore to free its slot. Crew bonuses stack.':'Na tvou plošinu se vejdou tři stroje a dva členové posádky. Vylepšení za 3 rudy zvýší výkon stroje. Sešrotováním získáš 1 rudu a uvolníš místo. Bonusy posádky se sčítají.',
  'Would like a quick chat about your mining KPIs. Repairs 4 Hull every third turn.':'Chce si promluvit o tvých těžebních výkazech. Každé třetí kolo obnoví 4 body odolnosti.'
 });
+Object.assign(CZECH,{'Common':'Běžná','Uncommon':'Neobvyklá','Rare':'Vzácná','Unique':'Unikátní','Legendary':'Legendární'});
 // Long phrases take precedence; token boundaries keep names and words intact.
 const escapeRegex=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 const phrasePattern=new RegExp('(?<![\\p{L}])(?:'+Object.keys(CZECH).sort((a,b)=>b.length-a.length).map(escapeRegex).join('|')+')(?![\\p{L}])','gu');
 let language;try{language=localStorage.getItem('deepforge-language')}catch{}
 if(!['en','cs'].includes(language))language=navigator.language.toLowerCase().startsWith('cs')?'cs':'en';
+function czechResourceForm(amount,kind){
+ const n=Math.abs(Number(amount));
+ return kind==='ore'?(n===1?'rudu':n>=2&&n<=4?'rudy':'rud'):(n===1?'energii':'energie');
+}
+function czechQuantities(text){
+ return text.replace(/(\d+)\s+(?:ruda|rudu|rudy|rud)(?![\p{L}])/gu,(_,n)=>`${n} ${czechResourceForm(n,'ore')}`)
+  .replace(/(\d+)\s+(?:energie|energii)(?![\p{L}])/gu,(_,n)=>`${n} ${czechResourceForm(n,'power')}`)
+  .replace(/(\d+)\s+karet(?![\p{L}])/gu,(_,n)=>`${n} ${Number(n)===1?'karta':Number(n)>=2&&Number(n)<=4?'karty':'karet'}`);
+}
 function translateText(value,heroTitle=false){
  if(language!=='cs')return value;
  if(heroTitle){
@@ -82,7 +92,7 @@ function translateText(value,heroTitle=false){
   if(Object.hasOwn(title,value))return title[value];
  }
  let text=value
-  .replace(/Activate: gain (\d+) (Ore|Power)\./g,(_,amount,kind)=>`Aktivace: získej ${amount} ${kind==='Ore'?(Number(amount)===1?'rudu':Number(amount)<5?'rudy':'rudy'):(Number(amount)===1?'energii':'energie')}.`)
+  .replace(/Activate: gain (\d+) (Ore|Power)\./g,(_,amount,kind)=>`Aktivace: získej ${amount} ${kind==='Ore'?(Number(amount)===1?'rudu':Number(amount)>=2&&Number(amount)<=4?'rudy':'rud'):(Number(amount)===1?'energii':'energie')}.`)
   .replace(/Spend (\d+) Power: deal (\d+) damage\./g,(_,cost,damage)=>`Zaplať ${cost} ${Number(cost)===1?'energii':'energie'}: způsob ${damage} poškození.`)
   .replace(/You defeated the (.*?)\. /g,'Poražený soupeř: $1. ')
   .replace(/Built (.*?)\./g,'Postaveno: $1.')
@@ -96,7 +106,7 @@ function translateText(value,heroTitle=false){
   .replace(/You need (\d+) (Ore|Power)\./g,'Potřebuješ $1 $2.')
   .replace(/An upgrade needs (\d+) Ore\./g,'Vylepšení stojí $1 rudy.')
   .replace(/^(View(?! card$)|Manage|Remove|Add) /,m=>({'View ':'Zobrazit: ','Manage ':'Spravovat: ','Remove ':'Odebrat: ','Add ':'Přidat: '}[m]));
- return text.replace(phrasePattern,m=>CZECH[m]).replace(/PEBBLEBOTTOM/g,'ŠUTROV').replace(/MOSTLY UP TO CODE/g,'PŘEDPISY SKORO DODRŽENY');
+ return czechQuantities(text.replace(phrasePattern,m=>CZECH[m]).replace(/PEBBLEBOTTOM/g,'ŠUTROV').replace(/MOSTLY UP TO CODE/g,'PŘEDPISY SKORO DODRŽENY'));
 }
 const localizedNodes=new WeakMap();
 const localizedAttributes=new WeakMap();
@@ -111,7 +121,12 @@ function localizePage(){
  while(walker.nextNode()){
   const node=walker.currentNode;
   if(node.parentElement.closest('script,style,svg,[data-language-control]'))continue;
-  const old=localizedNodes.get(node),source=old&&node.data===old.output?old.source:node.data,output=translateText(source,!!node.parentElement.closest('.hero h1'));
+  const old=localizedNodes.get(node),source=old&&node.data===old.output?old.source:node.data;
+  let output=translateText(source,!!node.parentElement.closest('.hero h1'));
+  if(language==='cs'&&/^(Ore|Power)$/.test(source.trim())&&node.parentElement.matches('.battle-top .resource')){
+   const amount=node.parentElement.querySelector('b')?.textContent;
+   if(amount!==undefined)output=' '+czechResourceForm(amount,source.trim()==='Ore'?'ore':'power');
+  }
   if(node.data!==output)node.data=output;
   localizedNodes.set(node,{source,output});
  }

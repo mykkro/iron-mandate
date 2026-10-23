@@ -1,0 +1,8 @@
+.rarity-common{--rarity:#555d4b}.rarity-uncommon{--rarity:#39734c}.rarity-rare{--rarity:#305c91}.rarity-unique{--rarity:#7b438c}.rarity-legendary{--rarity:#946016}
+.card.printed-card[data-rarity]{border-top:4px solid var(--rarity)}
+.rarity-label{display:flex;align-items:center;gap:5px;margin:0 0 6px;font-size:9px;font-weight:600;color:#343d2a;min-height:19px}
+.rarity-mark{background:var(--rarity);color:#fff5dc;padding:2px 5px;min-width:23px;text-align:center;font-size:9px;border:1px solid #252e1a;letter-spacing:.5px}
+.printed-card.crew .rarity-label>span{background:transparent;padding:0;color:#343d2a;border-radius:0}
+.printed-card.crew .rarity-label>.rarity-mark{background:var(--rarity);color:#fff5dc;padding:2px 5px}
+#card-inspector .rarity-label{font-size:13px;margin:8px 0}#card-inspector .rarity-mark{font-size:12px;padding:4px 8px}
+@media(max-width:650px){.installed .rarity-label{gap:3px;font-size:8px;min-height:17px;margin-bottom:4px}.installed .rarity-mark{font-size:7px;min-width:16px;padding:1px 2px}.hand-zone .rarity-label{font-size:9px}}

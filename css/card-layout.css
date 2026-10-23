@@ -76,3 +76,5 @@
  #discard-view .printed-card .rules-box{padding:5px}
 }
 .printed-card.crew .price-label,.printed-card.crew .effect-timing,.printed-card.crew .deck-controls>span{background:none;padding:0;border-radius:0;color:#424c30}
+
+.inspectable-card{cursor:zoom-in}.inspectable-card:focus-visible{outline:3px solid #d5e448;outline-offset:4px}
