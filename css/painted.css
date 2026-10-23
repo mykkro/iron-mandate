@@ -11,7 +11,7 @@
 .pile-face>.discard-symbol .painted-art{width:55px;height:55px}
 .crew-mini>span .painted-art{width:48px;height:48px}
 .last-tactic>.painted-art{width:28px;height:28px}
-.hero-art{background:#252c20 url('../assets/images/hero.png') center / cover;min-height:355px;box-shadow:7px 8px 0 #10130e}
+.hero-art{background:#252c20 url('../assets/images/handdrawn/hero.png') center / cover;min-height:355px;box-shadow:7px 8px 0 #10130e}
 .hero-art:before{inset:0;width:100%;height:100%;clip-path:none;background:linear-gradient(0deg,#0c140be0,transparent 25%);z-index:1}
 .hero-art:after,.hero-art>.rig,.hero-art>.floating-rock,.hero-art>.scene-sticker{display:none}
 .hero-art .art-caption{z-index:2;background:#172112cc;padding:5px 7px;right:8px;bottom:8px;font-size:8px}

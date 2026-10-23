@@ -40,3 +40,5 @@ Regenerate the sound effects with `python tools/generate_sounds.py` (Python stan
 [MIT](LICENSE). Artwork was generated for this project; sound effects were synthesized locally. Optional Google Fonts are served externally under their respective licenses.
 
 Card rarity tiers are Common, Uncommon, Rare, Unique, and Legendary, defined in `js/rarity.js`. Rarity is shown with a label, rank, and frame accent. It does not change costs or the current two-copy deck limit.
+
+The active art set is in `assets/images/handdrawn/`: ink contours, cross-hatching, and watercolor washes on textured paper. Earlier painted versions remain in `assets/images/` as backups. Resource icons are in `assets/icons/`.

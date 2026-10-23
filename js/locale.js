@@ -3,7 +3,7 @@ const CZECH={
  'Expedition':'Výprava','Workshop':'Dílna','Field guide':'Průvodce','DIGGING OUR OWN TROUBLE':'KOPÁME SI VLASTNÍ PRŮŠVIH','LICENSED TO MAKE A MESS':'POVOLENÍ DĚLAT BORDEL',
  "PROSPECTOR'S HANDBOOK":'PŘÍRUČKA PROSPEKTORA','Welcome, future workplace incident.':'Vítej, budoucí pracovní úraze.',
  'Destroy the rival rig before it destroys yours. Each turn, draw to five cards and gain 3 Power. Ore carries over; Power refreshes each turn.':'Znič soupeřův stroj dřív, než zničí ten tvůj. Každé kolo si dober do pěti karet a získej 3 energii. Ruda zůstává do dalších kol; energie se každé kolo obnoví.',
- ' machines with Ore. Each machine activates once per turn, beginning immediately. Drills produce Ore, boilers produce Power, and weapons damage the rival rig.':' stroje za rudu. Každý stroj můžeš aktivovat jednou za kolo, a to hned po postavení. Vrtáky těží rudu, kotle vyrábějí energii a zbraně poškozují soupeřův stroj.',
+ ' machines with Ore. Each machine activates once per turn, starting on the turn after it is built. Drills produce Ore, boilers produce Power, and weapons damage the rival rig.':' stroje za rudu. Každý stroj můžeš aktivovat jednou za kolo, a to až od následujícího kola po postavení. Vrtáky těží rudu, kotle vyrábějí energii a zbraně poškozují soupeřův stroj.',
  'Your rig holds three machines and two crew. Upgrade machines for 3 Ore to improve their output. Scrap a machine for 1 Ore to free its slot. Crew bonuses stack.':'Na tvou plošinu se vejdou tři stroje a dva členové posádky. Vylepšení za 3 rudy zvýší výkon stroje. Sešrotováním získáš 1 rudu a uvolníš místo. Bonusy posádky se sčítají.',
  'Tactics cost Power and work immediately. End your turn to let the rival act. Your discard pile reshuffles when your draw pile runs out.':'Taktiky stojí energii a účinkují okamžitě. Ukončením kola pustíš na tah soupeře. Když dojdou karty v dobíracím balíčku, zamíchá se odhazovací hromádka.',
  'Win to choose a reward. In the Workshop, customize your 15-card deck, up to two copies per card. Progress saves in this browser.':'Za vítězství si vybereš odměnu. V dílně si sestav balíček s 15 kartami, nejvýše dvě kopie každé karty. Postup se ukládá v tomto prohlížeči.',
@@ -71,6 +71,8 @@ Object.assign(CZECH,{
  'Would like a quick chat about your mining KPIs. Repairs 4 Hull every third turn.':'Chce si promluvit o tvých těžebních výkazech. Každé třetí kolo obnoví 4 body odolnosti.'
 });
 Object.assign(CZECH,{'Common':'Běžná','Uncommon':'Neobvyklá','Rare':'Vzácná','Unique':'Unikátní','Legendary':'Legendární'});
+Object.assign(CZECH,{'Dismiss crew':'Propustit','Dismiss for free. This card goes to your discard pile. No Ore is refunded.':'Propuštění je zdarma. Karta se přesune na odhazovací hromádku. Ruda se nevrací.','dismissed to discard pile.':'propuštění do odhazovací hromádky.'});
+Object.assign(CZECH,{'Ready next turn':'Připraveno příští kolo','New machines wait one turn':'Nové stroje čekají jedno kolo'});
 // Long phrases take precedence; token boundaries keep names and words intact.
 const escapeRegex=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 const phrasePattern=new RegExp('(?<![\\p{L}])(?:'+Object.keys(CZECH).sort((a,b)=>b.length-a.length).map(escapeRegex).join('|')+')(?![\\p{L}])','gu');

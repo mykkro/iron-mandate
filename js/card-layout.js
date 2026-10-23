@@ -23,7 +23,7 @@ function effectBadges(key,level=0){
 }
 card=function(key,action='',extra=''){
  const c=CARDS[key],kind=c.type==='tactic'?'power':'ore',label=kind==='ore'?'Ore':'Power';
- const activation=c.type==='machine'?`<div class="activation-line"><span>Activate</span><span class="activation-payment">${c.activation?`${c.activation} ${resourceIcon('power')}`:'Free'}</span><span class="once-per-turn">Once per turn</span></div>`:'';
+ const activation=c.type==='machine'?`<div class="activation-line"><span>Activate</span><span class="activation-payment">${c.activation?`${c.activation} ${resourceIcon('power')}`:'Free'}</span><span class="once-per-turn">Once per turn</span><span class="once-per-turn">New machines wait one turn</span></div>`:'';
  return `<article class="card printed-card ${c.theme||c.type}" data-card-key="${key}"><div class="card-corners"><div class="price-corner"><span class="cost illustrated-cost" aria-label="${c.cost} ${label}"><b>${c.cost}</b>${resourceIcon(kind)}</span><span class="price-label">PRICE</span></div>${effectBadges(key)}</div><div class="art" aria-hidden="true"><span class="card-icon">${c.symbol}</span></div><h3>${c.name}</h3><div class="type">${c.type}${c.theme?' · Aethercraft':''}</div><div class="rules-box">${activation}<p>${c.text}</p></div><div class="flavor">${FLAVORS[key]||''}</div>${action}${extra}</article>`;
 };
 const battleBeforeCardLayout=renderBattle;
