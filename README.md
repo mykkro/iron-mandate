@@ -15,6 +15,7 @@ Open `index.html` in a modern browser. No installation or build step is needed. 
 - English and Czech, with a remembered language preference.
 - Original sound effects with saved mute and volume controls.
 - Opponent actions shown one at a time, with effects and turn history.
+- A defeat screen with quick retry, Workshop, and expedition options.
 
 Your collection, deck, and preferences are saved in your browser. Battles restart when the page reloads. Each rival shows its next three actions; later rivals steal Ore, jam and dissolve machines, clog your deck with Red Tape, and have parts you can target and destroy.
 

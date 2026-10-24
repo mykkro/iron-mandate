@@ -1,0 +1,20 @@
+/* Loss panel shown over the battle table. */
+.defeat-overlay{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:16px;background:#0c120bd9;animation:defeat-fade .35s ease-out}
+.defeat-panel{position:relative;width:min(520px,100%);max-height:calc(100vh - 32px);overflow:auto;padding:34px 28px 22px;text-align:center;background:#bcb697 url('../assets/images/grit.svg');color:#29321d;border:3px solid #121a0b;border-radius:2px;box-shadow:7px 8px 0 #10160b}
+.defeat-panel .eyebrow{color:#7a2f1c}
+.defeat-panel h1{margin:10px 0 14px;font-size:46px;color:#7a1f12}
+.defeat-panel p{color:#3e482f;margin:10px 0}
+.defeat-stamp{position:absolute;top:22px;right:8px;left:auto;transform:rotate(14deg);font-size:22px}
+.defeat-foe{display:flex;align-items:center;justify-content:center;gap:10px;font:800 24px 'Barlow Condensed',Impact,sans-serif}
+.defeat-icon{font-size:34px;filter:grayscale(.3)}
+.defeat-stats{display:flex;justify-content:center;gap:12px;margin:14px 0}
+.defeat-stats div{flex:1;max-width:170px;padding:8px;border:2px solid #29321c;background:#c8c0a2 url('../assets/images/grit.svg')}
+.defeat-stats dt{font:600 9px 'IBM Plex Mono',monospace;letter-spacing:.8px;text-transform:uppercase;color:#4a5534}
+.defeat-stats dd{margin:2px 0 0;font:800 24px 'Barlow Condensed',Impact,sans-serif}
+.defeat-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:18px}
+.defeat-actions button{flex:1 1 140px}
+.defeat-peek{margin-top:14px;border:none;font-size:12px;text-decoration:underline;color:#3e482f}
+.table-bottom #defeat-again{margin-left:auto}
+@keyframes defeat-fade{from{opacity:0}}
+@media(prefers-reduced-motion:reduce){.defeat-overlay{animation:none}}
+@media(max-width:650px){.defeat-panel{padding:28px 16px 18px}.defeat-panel h1{font-size:36px}}
