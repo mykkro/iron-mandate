@@ -274,6 +274,93 @@ def scenario_finale_reward_copy(pg):
     pg.evaluate("() => { reward = null; render(); }")
 
 
+@scenario
+def scenario_new_tactics(pg):
+    start(pg, 0, hand=["rummage"], deck=["drill", "boiler", "rivet"], power=1)
+    pg.evaluate("() => play(0)")
+    s = snap(pg)
+    check("lucky rummage draws 2", len(s["hand"]) == 2 and len(s["deck"]) == 1, s)
+    start(pg, 4, hand=["jam"], power=1)   # Audit, Collect Taxes, Audit: distinct names
+    before = snap(pg)["queue"]
+    pg.evaluate("() => play(0)")
+    check("paperwork jam rotates the queue", snap(pg)["queue"] == before[1:] + before[:1])
+    start(pg, 7, hand=["wrench", "wrench"], power=4)
+    pg.evaluate("() => { setTarget('head1'); play(0); }")
+    s = snap(pg)
+    check("wrench deals 8 to a targeted part", s["parts"][0][1] == 6 and s["foe"] == 50, s)
+    pg.evaluate("() => { setTarget('rig'); play(0); }")
+    check("wrench deals 4 to the rig", snap(pg)["foe"] == 46)
+    start(pg, 0, hand=["brolly"], power=2)
+    pg.evaluate("() => play(0)")
+    end_turn(pg)
+    s = snap(pg)
+    check("brass umbrella blocks the next rival turn", s["hull"] == 40 and s["blocked"] is False, s)
+
+
+@scenario
+def scenario_new_crew(pg):
+    start(pg, 0, crew=["whisperer"], ore=0)
+    pg.evaluate("() => { battle.machines = [{key:'drill',level:1,used:false,builtTurn:0}]; activate(0); }")
+    check("gear whisperer adds 1 to upgraded output", snap(pg)["ore"] == 5)
+    start(pg, 0, crew=["bodyguard"])
+    end_turn(pg)
+    check("tin bodyguard reduces each attack by 2", snap(pg)["hull"] == 39)
+    start(pg, 0, crew=["ollie"], deck=["drill"] * 10)
+    end_turn(pg)
+    check("overtime ollie draws to 6", len(snap(pg)["hand"]) == 6)
+
+
+@scenario
+def scenario_new_machines(pg):
+    start(pg, 0, power=0)
+    pg.evaluate("() => { battle.machines = [{key:'golem',level:0,used:false,builtTurn:0}]; activate(0); }")
+    s = snap(pg)
+    check("scrap golem activates for free: 2 damage", s["foe"] == 26 and s["power"] == 0, s)
+    pg.evaluate("() => scrap(0)")
+    check("scrapped golem deals 6", snap(pg)["foe"] == 20)
+    start(pg, 0, foe=6)
+    pg.evaluate("() => { battle.machines = [{key:'golem',level:0,used:true,builtTurn:0}]; scrap(0); }")
+    s = snap(pg)
+    won = pg.evaluate("() => !!reward")
+    check("scrapping a golem can win the battle", s["over"] and won, s)
+    pg.evaluate("() => { reward = null; }")
+    start(pg, 0, power=1, lastDamageTaken=7)
+    pg.evaluate("() => { battle.machines = [{key:'spite',level:0,used:false,builtTurn:0}]; activate(0); }")
+    s = snap(pg)
+    check("spite engine deals last turn's damage", s["foe"] == 21 and s["power"] == 0, s)
+    start(pg, 0, power=1, lastDamageTaken=15)
+    pg.evaluate("() => { battle.machines = [{key:'spite',level:0,used:false,builtTurn:0}]; activate(0); }")
+    check("spite engine caps at 10", snap(pg)["foe"] == 18)
+
+
+@scenario
+def scenario_red_tape(pg):
+    start(pg, 6, hand=["redtape"], power=1, crew=["wisp"])
+    label = pg.inner_text(".hand-zone [data-play]")
+    check("red tape button says throw away", "Throw away" in label and "1 Power" in label, label)
+    pg.evaluate("() => play(0)")
+    s = snap(pg)
+    check("throwing red tape removes it from the battle", "redtape" not in s["hand"] + s["discard"] + s["deck"], s)
+    check("throwing red tape costs 1 Power and is not a tactic", s["power"] == 0, s)
+    pg.evaluate("""() => { battle = null;
+        for (const k of Object.keys(CARDS)) if (!CARDS[k].junk) save.owned[k] = 2;
+        reward = {enemy: 0, choices: ['cannon']}; render(); }""")
+    pg.click("[data-reward]")
+    check("reward fallback never grants red tape", pg.evaluate("() => !save.owned.redtape && !save.deck.includes('redtape')"))
+
+
+@scenario
+def scenario_new_cards_render(pg):
+    pg.evaluate("""() => { battle = null; reward = null;
+        for (const k of ['rummage','jam','wrench','brolly','whisperer','bodyguard','ollie','golem','spite']) save.owned[k] = 1;
+        view = 'collection'; render(); }""")
+    names = pg.inner_text(".collection-grid")
+    for name in ["Lucky Rummage", "Paperwork Jam", "Wrench in the Works", "Brass Umbrella", "Gear Whisperer",
+                 "Tin Bodyguard", "Overtime Ollie", "Scrap Golem", "Spite Engine"]:
+        check(f"workshop shows {name}", name.upper() in names.upper())
+    check("workshop never shows red tape", "RED TAPE" not in names.upper())
+
+
 def main():
     with sync_playwright() as p:
         browser = p.chromium.launch()

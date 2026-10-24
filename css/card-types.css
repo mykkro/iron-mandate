@@ -7,3 +7,4 @@
 .installed.exhausted .card.printed-card{background-color:#92927b}
 #card-inspector .card.printed-card{border-radius:16px}
 @media(max-width:650px){.installed .card.printed-card,.hand-zone .card.printed-card{border-radius:9px}.card.printed-card .art{border-radius:5px}}
+.card.printed-card[data-card-type="junk"]{background-color:#a9a49a}

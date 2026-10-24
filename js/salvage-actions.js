@@ -5,9 +5,10 @@ scrap=function(i){
  const ore=1+b.crew.filter(k=>k==='jegor').length;
  const repair=Math.min(b.max-b.hull,2*b.crew.filter(k=>k==='bobo').length);
  b.discard.push(m.key);b.ore+=ore;b.hull+=repair;
+ if(m.key==='golem')dealDamage(6);
  log(`Scrapped ${CARDS[m.key].name}. Ore +${ore}.`);
  if(b.crew.includes('bobo'))log(`Bobo: Hull +${repair}.`);
- render();
+ check();render();
 };
 const battleBeforeSalvageLabels=renderBattle;
 renderBattle=function(){
