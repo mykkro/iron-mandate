@@ -152,6 +152,7 @@ function translateText(value,heroTitle=false){
   .replace(/^(.*?) destroyed\.$/,'Zničeno: $1.')
   .replace(/Threw away (.*?)\./g,'Zahozeno: $1.')
   .replace(/You defeated the (.*?)\. /g,'Poražený soupeř: $1. ')
+  .replace(/(\d+) \/ (\d+) rivals defeated/g,(_,n,total)=>`${n} / ${total} ${Number(n)===1?'poražený soupeř':Number(n)>=2&&Number(n)<=4?'poražení soupeři':'poražených soupeřů'}`)
   .replace(/Built (.*?)\./g,'Postaveno: $1.')
   .replace(/Played (.*?)\./g,'Zahráno: $1.')
   .replace(/(.*?) joined the crew\./g,'Nová posádka: $1.')
