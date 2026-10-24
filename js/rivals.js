@@ -130,9 +130,20 @@ async function endTurn(){
  b.turn++;b.power=3;b.tactic=false;b.machines.forEach(m=>m.used=false);
  b.discard.push(...b.hand.splice(0));draw();update();
 }
+// Actions that can't apply in the current state preview the attack they fall back to.
+function willFallBack(b,s,turn){
+ if(s.type==='regrow')return !b.parts.some(p=>p.destroyed);
+ if(s.type==='corrode')return (s.requires&&!livingParts(b).some(p=>p.id===s.requires))||!b.machines.some(m=>!m.level);
+ if(s.type==='jam')return !b.machines.some(m=>m.builtTurn!==turn&&m.jamTurn!==turn+1);
+ return false;
+}
+function stepPreview(b,s,turn){
+ if(willFallBack(b,s,turn))return STEP_TEXT.attack(b,basicAttack(rivalDef(b)),turn);
+ return STEP_TEXT[s.type]?STEP_TEXT[s.type](b,s,turn):'';
+}
 function queueMarkup(b){
  const when=['NEXT','THEN','LATER'];
- return `<div class="zone-label">NEXT ACTIONS</div><ol class="rival-queue">${b.queue.map((a,i)=>`<li class="queue-card ${i?'later':'next'} ${!i&&b.blocked?'blocked':''}"><span class="queue-when">${when[i]}</span><span class="queue-icon" aria-hidden="true">${a.icon}</span><strong>${a.name}</strong>${a.steps.map(s=>`<span class="queue-effect">${STEP_TEXT[s.type]?STEP_TEXT[s.type](b,s,b.turn+i):''}</span>`).join('')}${!i&&b.blocked?'<span class="stamp">BLOCKED</span>':''}</li>`).join('')}</ol>`;
+ return `<div class="zone-label">NEXT ACTIONS</div><ol class="rival-queue">${b.queue.map((a,i)=>`<li class="queue-card ${i?'later':'next'} ${!i&&b.blocked?'blocked':''}"><span class="queue-when">${when[i]}</span><span class="queue-icon" aria-hidden="true">${a.icon}</span><strong>${a.name}</strong>${a.steps.map(s=>`<span class="queue-effect">${stepPreview(b,s,b.turn+i)}</span>`).join('')}${!i&&b.blocked?'<span class="stamp">BLOCKED</span>':''}</li>`).join('')}</ol>`;
 }
 const battleBeforeRivals=renderBattle;
 renderBattle=function(){

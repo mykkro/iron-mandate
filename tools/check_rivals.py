@@ -399,6 +399,20 @@ def scenario_crew_has_no_view_button(pg):
     pg.evaluate("() => document.querySelector('#card-inspector').close()")
 
 
+@scenario
+def scenario_queue_shows_fallback_damage(pg):
+    start(pg, 7)
+    texts = pg.eval_on_selector_all(".rival-queue .queue-card", "els => els.map(e => e.innerText)")
+    check("regrow with no lost head previews its bite damage", "11 damage" in texts[2], texts)
+    start(pg, 5)
+    pg.evaluate("() => { battle.machines = [{key:'rivet',level:0,used:false,builtTurn:0}]; battle.parts[0].destroyed = true; battle.parts[0].hull = 0; render(); }")
+    texts = pg.eval_on_selector_all(".rival-queue .queue-card", "els => els.map(e => e.innerText)")
+    check("corrode without its cauldron previews Rust Spray damage", "5 damage" in texts[2], texts)
+    start(pg, 5)
+    texts = pg.eval_on_selector_all(".rival-queue .queue-card", "els => els.map(e => e.innerText)")
+    check("jam with no machine previews its attack", "5 damage" in texts[1], texts)
+
+
 def main():
     with sync_playwright() as p:
         browser = p.chromium.launch()
