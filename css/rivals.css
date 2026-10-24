@@ -22,3 +22,5 @@
 .target-tag{font:700 9px 'IBM Plex Mono',monospace;font-style:normal;color:#d5e448;letter-spacing:.5px}
 .hull-chip.hull-part{background-color:#c9b27a}
 @media(max-width:650px){.rival-part{width:calc(50% - 4px)}}
+.installed.jammed .card{filter:saturate(.45)}
+.jam-stamp{top:38%;font-size:20px}

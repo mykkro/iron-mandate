@@ -180,6 +180,100 @@ def scenario_rig_target_marker_only_with_parts(pg):
     check("rig shows target tag when parts exist", pg.query_selector(".rival-rig .target-tag") is not None)
 
 
+@scenario
+def scenario_eight_rivals_on_the_expedition(pg):
+    pg.evaluate("() => { battle = null; reward = null; view = 'campaign'; save.unlocked = 4; render(); }")
+    check("eight encounters listed", len(pg.query_selector_all(".encounter")) == 8)
+    check("progress counts eight", "/ 8 rivals defeated" in pg.inner_text("main"))
+    check("fight 5 open after the frog", pg.query_selector('[data-fight="4"]').is_enabled())
+    check("fight 6 still locked", not pg.query_selector('[data-fight="5"]').is_enabled())
+    pg.evaluate("() => { save.unlocked = 8; render(); }")
+    pg.click("#continue")
+    check("continue goes to the last rival", snap(pg)["foe"] == 50)
+
+
+@scenario
+def scenario_tax_collector(pg):
+    start(pg, 4, ore=1)
+    end_turn(pg)                      # Audit 5
+    end_turn(pg)                      # Collect Taxes: has 1 of 3 Ore
+    s = snap(pg)
+    check("tax takes the Ore it can", s["ore"] == 0, s)
+    check("tax shortfall: 2 damage per missing Ore", s["hull"] == 40 - 5 - 4, s)
+    start(pg, 4, ore=5, turn=2)
+    pg.evaluate("() => { battle.queue = [ENEMIES[4].script[1], ENEMIES[4].script[2], ENEMIES[4].script[0]]; battle.blocked = true; render(); }")
+    end_turn(pg)
+    s = snap(pg)
+    check("blocked tax still takes Ore", s["ore"] == 2 and s["hull"] == 40, s)
+
+
+@scenario
+def scenario_corrosion(pg):
+    start(pg, 5)
+    pg.evaluate("() => { battle.machines = [{key:'rivet',level:0,used:false,builtTurn:0},{key:'drill',level:1,used:false,builtTurn:0}]; render(); }")
+    end_turn(pg)                      # Rust Spray
+    end_turn(pg)                      # Seize Up: jams the costlier rivet until end of turn 3
+    s = snap(pg)
+    check("jam hits the strongest ready machine", s["machines"][0] == ["rivet", 0, 3], s)
+    pg.evaluate("() => { battle.power = 5; activate(0); }")
+    check("jammed machine cannot activate", snap(pg)["foe"] == 60)
+    check("jammed stamp shown", pg.query_selector(".installed.jammed .jam-stamp") is not None)
+    end_turn(pg)                      # Corrode: destroys the un-upgraded rivet
+    s = snap(pg)
+    check("corrode destroys the un-upgraded machine", [m[0] for m in s["machines"]] == ["drill"] and "rivet" in s["discard"] + s["hand"] + s["deck"], s)
+    start(pg, 5, turn=3)
+    pg.evaluate("""() => { battle.machines = [{key:'rivet',level:0,used:false,builtTurn:0}];
+        battle.parts[0].destroyed = true; battle.parts[0].hull = 0;
+        battle.queue = [ENEMIES[5].script[2], ENEMIES[5].script[0], ENEMIES[5].script[1]]; render(); }""")
+    end_turn(pg)
+    s = snap(pg)
+    check("corrode without the cauldron becomes Rust Spray", s["hull"] == 35 and len(s["machines"]) == 1, s)
+    start(pg, 5, turn=2)
+    pg.evaluate("() => { battle.queue = [ENEMIES[5].script[1], ENEMIES[5].script[2], ENEMIES[5].script[0]]; }")
+    end_turn(pg)
+    check("jam with no machines becomes an attack", snap(pg)["hull"] == 35)
+
+
+@scenario
+def scenario_bureaucrat(pg):
+    start(pg, 6, foe=50)
+    end_turn(pg)                      # Stamp 6, cabinet repairs 3
+    s = snap(pg)
+    check("filing cabinet repairs 3 per turn", s["foe"] == 53, s)
+    end_turn(pg)                      # File in Triplicate
+    deck = snap(pg)["deck"] + snap(pg)["hand"]
+    check("two Red Tape added to the draw pile", deck.count("redtape") == 2, deck)
+    pg.evaluate("() => { battle.parts[0].destroyed = true; battle.foe = 50; }")
+    end_turn(pg)
+    check("no repair once the cabinet is gone", snap(pg)["foe"] == 50)
+
+
+@scenario
+def scenario_hydra(pg):
+    start(pg, 7)
+    end_turn(pg)
+    check("triple bite with three heads: 2 + 9", snap(pg)["hull"] == 29)
+    pg.evaluate("() => { battle.hull = 40; battle.parts[0].destroyed = true; battle.parts[0].hull = 0; }")
+    end_turn(pg)
+    check("two heads: 2 + 6", snap(pg)["hull"] == 32)
+    end_turn(pg)                      # Regrow
+    check("regrow brings a head back at 8", snap(pg)["parts"][0] == ["head1", 8, False])
+    start(pg, 7, turn=3)
+    pg.evaluate("() => { battle.queue = [ENEMIES[7].script[2], ENEMIES[7].script[0], ENEMIES[7].script[1]]; }")
+    end_turn(pg)
+    check("regrow with no lost head bites instead", snap(pg)["hull"] == 29)
+
+
+@scenario
+def scenario_finale_reward_copy(pg):
+    pg.evaluate("() => { battle = null; reward = {enemy: 7, choices: ['cannon']}; render(); }")
+    check("hydra victory uses finale copy", "CERTIFIED HYDRA WRANGLER" in pg.inner_text("main"))
+    pg.evaluate("() => { reward = {enemy: 3, choices: ['cannon']}; render(); }")
+    text = pg.inner_text("main")
+    check("frog victory points deeper", "CERTIFIED FROG BOTHERER" in text and "The mines go deeper" in text, text)
+    pg.evaluate("() => { reward = null; render(); }")
+
+
 def main():
     with sync_playwright() as p:
         browser = p.chromium.launch()

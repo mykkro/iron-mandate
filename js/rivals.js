@@ -40,6 +40,70 @@ const STEP_RESULTS={
  attack:(r,t)=>r.blocked?`0 ${t.damage}<span>${t.blocked}</span>`:`${r.dealt} ${t.damage}<span>${t.yourRig}: ${r.before} → ${r.after} ${t.hull}</span>`,
  repair:(r,t)=>r.amount?`+${r.amount} ${t.hull}<span>${t.rivalRig}: ${r.before} → ${r.after} ${t.hull}</span>`:`<span>${t.noRepair}</span>`
 };
+function strongestMachine(list){return list.reduce((best,m)=>!best||CARDS[m.key].cost>CARDS[best.key].cost?m:best,null)}
+Object.assign(STEP_HANDLERS,{
+ tax(b,r){const paid=Math.min(r.amount,b.ore);b.ore-=paid;r.paid=paid;if(paid)log(`${rivalDef(b).name} collected ${paid} Ore.`);return hurt(b,r,(r.amount-paid)*2)},
+ jam(b,r,turn){
+  const m=strongestMachine(b.machines.filter(x=>x.builtTurn!==turn&&x.jamTurn!==turn+1));
+  if(!m)return fallback(b,r,turn);
+  m.jamTurn=turn+1;r.target=m.key;log(`${rivalDef(b).name} jammed ${CARDS[m.key].name}.`);return 0;
+ },
+ corrode(b,r,turn){
+  const m=r.requires&&!livingParts(b).some(p=>p.id===r.requires)?null:strongestMachine(b.machines.filter(x=>!x.level));
+  if(!m)return fallback(b,r,turn);
+  b.machines.splice(b.machines.indexOf(m),1);b.discard.push(m.key);r.target=m.key;log(`${rivalDef(b).name} dissolved ${CARDS[m.key].name}.`);return 0;
+ },
+ junk(b,r){for(let n=0;n<r.count;n++)b.deck.splice(Math.floor(Math.random()*(b.deck.length+1)),0,'redtape');log(`${rivalDef(b).name} added ${r.count} Red Tape to your deck.`);return 0},
+ regrow(b,r,turn){
+  const p=b.parts.find(x=>x.destroyed);
+  if(!p)return fallback(b,r,turn);
+  Object.assign(p,{destroyed:false,hull:r.hull});r.target=p.name;log(`${rivalDef(b).name} regrew ${p.name}.`);return 0;
+ }
+});
+Object.assign(STEP_TEXT,{
+ tax:(b,s)=>`Takes ${s.amount} Ore`,
+ jam:()=>'Jams a machine',
+ corrode:()=>'Destroys a machine',
+ junk:(b,s)=>`Adds ${s.count} Red Tape`,
+ regrow:()=>'Regrows a head'
+});
+const cardLabel=key=>typeof translateText==='function'?translateText(CARDS[key].name):CARDS[key].name;
+Object.assign(STEP_RESULTS,{
+ tax:(r,t)=>`${t.collected} ${r.paid}${r.dealt||r.blocked?` · ${r.blocked?`0 ${t.damage}`:`${r.dealt} ${t.damage}`}`:''}<span>${t.ore}</span>`,
+ jam:(r,t)=>`${t.jammed}: ${cardLabel(r.target)}`,
+ corrode:(r,t)=>`${t.corroded}: ${cardLabel(r.target)}`,
+ junk:(r,t)=>`+${r.count} ${t.junk}`,
+ regrow:(r,t)=>`${t.regrown}: ${typeof translateText==='function'?translateText(r.target):r.target}`
+});
+const heads=[1,2,3].map(n=>({id:`head${n}`,name:`Head ${['I','II','III'][n-1]}`,hull:14,effect:'bite',amount:3,text:'While intact: +3 damage on every attack.'}));
+ENEMIES.push(
+ {name:'Sir Reginald Tax',title:'Tollgate Ridge',icon:'🎩',portrait:'taxman',hull:58,damage:5,intent:'Audit',
+  description:'Collects a toll on every rock, breath and bad idea. Takes your Ore every few turns.',rewards:['rummage','brolly','ollie'],
+  script:[attackAction('Audit','🧾',5),{name:'Collect Taxes',icon:'💰',steps:[{type:'tax',amount:3}]},attackAction('Audit','🧾',5)]},
+ {name:'Madame Corrosion',title:'The Rust Marsh',icon:'🧪',portrait:'corrosion',hull:60,damage:5,intent:'Rust Spray',
+  description:'Brews rust by the bucket. Jams your machines and dissolves the ones you never upgraded.',rewards:['whisperer','bodyguard','golem'],
+  parts:[{id:'cauldron',name:'Rust Cauldron',hull:14,effect:'corrode',text:'While intact: Corrode destroys a machine.'}],
+  script:[attackAction('Rust Spray','🌧️',5),{name:'Seize Up',icon:'🔩',steps:[{type:'jam'}]},{name:'Corrode',icon:'🧪',steps:[{type:'corrode',requires:'cauldron'}]}]},
+ {name:'The Bureaucrat',title:'Ministry of Forms',icon:'🗂️',portrait:'bureaucrat',hull:64,damage:6,intent:'Stamp of Disapproval',
+  description:'Has a stamp for everything, including you. Buries your deck in Red Tape.',rewards:['jam','spite','rummage'],
+  parts:[{id:'cabinet',name:'Filing Cabinet',hull:12,effect:'repair',amount:3,text:'While intact: repairs 3 Hull each turn.'}],
+  script:[attackAction('Stamp of Disapproval','🔖',6),{name:'File in Triplicate',icon:'🗂️',steps:[{type:'junk',count:2}]},attackAction('Stamp of Disapproval','🔖',6)]},
+ {name:'The Clockwork Hydra',title:'The Gear Abyss',icon:'🐍',portrait:'hydra',hull:50,damage:2,intent:'Triple Bite',finale:true,
+  description:'Three heads, zero manners. Every head bites harder, and they grow back.',rewards:['wrench','spite','golem'],
+  parts:heads,
+  script:[attackAction('Triple Bite','🐍',2),attackAction('Triple Bite','🐍',2),{name:'Regrow',icon:'⚙️',steps:[{type:'regrow',hull:8}]}],
+  victory:{eyebrow:'CERTIFIED HYDRA WRANGLER',text:'You conquered the deepest mine. Experiment with your deck and challenge the crews again.'}}
+);
+ENEMIES[3].victory={eyebrow:'CERTIFIED FROG BOTHERER',text:'The mines go deeper… four new rivals wait below.'};
+const activateBeforeJam=activate;
+activate=function(i){const m=battle?.machines[i];if(m&&m.jamTurn===battle.turn)return toast('Jammed until next turn.');activateBeforeJam(i)};
+function markJammed(b){
+ app.querySelectorAll('.installed').forEach((el,i)=>{
+  if(b.machines[i]?.jamTurn!==b.turn)return;
+  el.classList.add('jammed');el.querySelector('.card').insertAdjacentHTML('beforeend','<span class="stamp jam-stamp">JAMMED</span>');
+  const button=el.querySelector('[data-activate]');if(button){button.disabled=true;button.textContent='Jammed until next turn'}
+ });
+}
 function stepResultMarkup(r,t){return STEP_RESULTS[r.type]?STEP_RESULTS[r.type](r,t):''}
 async function endTurn(){
  const b=battle;if(!b||b.over||b.resolving)return;
@@ -77,6 +141,7 @@ renderBattle=function(){
  zone.innerHTML=queueMarkup(b)+partsMarkup(b);
  zone.querySelectorAll('[data-target]').forEach(el=>el.onclick=()=>setTarget(el.dataset.target));
  markRigTarget(b);
+ markJammed(b);
 };
 function targetPart(b=battle){return b.target==='rig'?null:livingParts(b).find(p=>p.id===b.target)||null}
 function setTarget(id){const b=battle;if(!b||b.over)return;b.target=livingParts(b).some(p=>p.id===id)?id:'rig';render()}
