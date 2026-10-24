@@ -6,7 +6,7 @@ const ACTION_COPY={
 const actionCopy=()=>ACTION_COPY[typeof language!=='undefined'&&language==='cs'?'cs':'en'];
 function opponentActionMarkup(action,index){
  const t=actionCopy(),done=action.state==='resolved';
- const name=typeof translateText==='function'?translateText(action.name||''):action.name;
+ const title=action.type==='repair'&&!action.part?t.repair:action.name||'',name=typeof translateText==='function'?translateText(title):title;
  return `<li class="opponent-event ${action.state}" data-action-step="${index}"><span class="event-number">${index+1}</span><div><strong>${name}</strong>${done?`<div class="event-effect">${stepResultMarkup(action,t)}</div>`:''}${done&&action.fallbackFrom?`<small>${t.fallback}</small>`:''}${done&&action.bonus?`<small>${t.bonus}</small>`:''}${done&&action.scaling?`<small>${t.scaling}: +${action.scaling}</small>`:''}</div><span class="event-state">${done?t.completed:t.queued}</span></li>`;
 }
 function opponentTurnMarkup(entry){

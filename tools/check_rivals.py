@@ -374,6 +374,14 @@ def scenario_czech(pg):
         check(f"czech shows '{czech}'", czech.lower() in text.lower(), czech)
     end_turn(pg)
     check("czech opponent panel", "poškození" in pg.inner_text("#opponent-sequence"))
+    exact = pg.evaluate("() => Object.keys(CZECH).filter(k => translateText(k) !== CZECH[k])")
+    check("every full-sentence Czech entry translates as itself", exact == [], exact)
+    start(pg, 2, foe=30)
+    pg.evaluate("() => { battle.queue = [ENEMIES[2].script[2], ENEMIES[2].script[0], ENEMIES[2].script[1]]; }")
+    end_turn(pg)
+    pg.wait_for_timeout(200)
+    journal = pg.inner_text(".table-journal summary")
+    check("czech repair log uses the right plural", "obnovil 4 body odolnosti" in journal, journal)
     pg.evaluate("() => { language = 'en'; localizePage(); }")
 
 
@@ -413,7 +421,79 @@ def scenario_queue_shows_fallback_damage(pg):
     check("jam with no machine previews its attack", "5 damage" in texts[1], texts)
 
 
+QUEUE_TEXT = "els => els.map(e => e.innerText)"
+
+
+@scenario
+def scenario_queue_during_reveal(pg):
+    pg.emulate_media(reduced_motion="no-preference")
+    start(pg, 0, turn=3, blocked=True)
+    pg.evaluate("() => { endTurn(); }")
+    pg.wait_for_timeout(250)
+    texts = pg.eval_on_selector_all(".rival-queue .queue-card", QUEUE_TEXT)
+    check("queue keeps three cards while the rival acts", len(texts) == 3, texts)
+    check("queue during the reveal is priced for the coming turns", all("4 damage" in t for t in texts), texts)
+    check("blocked stamp is not moved onto next turn's action", not any("BLOCKED" in t for t in texts), texts)
+    pg.wait_for_timeout(900)
+    pg.emulate_media(reduced_motion="reduce")
+
+
+@scenario
+def scenario_rummage_is_last_tactic(pg):
+    start(pg, 0, hand=["rummage"], deck=["drill", "boiler"], power=1)
+    pg.evaluate("() => play(0)")
+    check("lucky rummage shows as the last tactic", pg.evaluate("() => battle.lastTactic") == "rummage")
+
+
+@scenario
+def scenario_manager_repair_copy(pg):
+    start(pg, 2, foe=30, turn=3)
+    pg.evaluate("() => { battle.queue = [ENEMIES[2].script[2], ENEMIES[2].script[0], ENEMIES[2].script[1]]; }")
+    end_turn(pg)
+    titles = pg.eval_on_selector_all("#opponent-sequence .opponent-event strong", "els => els.map(e => e.innerText)")
+    check("rival repair step is titled Repair", titles[-1:] == ["Repair"], titles)
+    logs = pg.evaluate("() => battle.logs")
+    check("repair log names the rival", "The Middle Manager repaired 4 Hull." in logs, logs)
+    check("completed-actions pile records the repair", pg.evaluate("() => battle.actionHistory.at(-1).repair") is True)
+    start(pg, 6, foe=50)
+    end_turn(pg)
+    titles = pg.eval_on_selector_all("#opponent-sequence .opponent-event strong", "els => els.map(e => e.innerText)")
+    check("part repair keeps the part's name", titles[-1:] == ["Filing Cabinet"], titles)
+
+
+@scenario
+def scenario_hand_size_copy(pg):
+    start(pg, 0, crew=["ollie"])
+    check("hand heading follows Overtime Ollie", "Draw back to six." in pg.inner_text(".hand-heading"))
+    check("field guide explains the queue and targeting",
+          "next three actions" in pg.evaluate("() => document.querySelector('#guide').textContent"))
+
+
+@scenario
+def scenario_missing_art_not_refetched(pg):
+    html = pg.evaluate("""() => { ART_FALLBACK.gone_art = '🧪';
+        const box = document.createElement('div'); box.innerHTML = paintedAsset('gone_art'); document.body.append(box);
+        return new Promise(r => setTimeout(() => { box.remove(); r(paintedAsset('gone_art')); }, 400)); }""")
+    check("known-missing art renders the fallback without a new request", "<img" not in html and "🧪" in html, html)
+
+
+@scenario
+def scenario_small_copy_fixes(pg):
+    start(pg, 4)
+    texts = pg.eval_on_selector_all(".rival-queue .queue-card", QUEUE_TEXT)
+    check("tax preview explains the shortfall", "2 damage per missing Ore" in texts[1], texts)
+    start(pg, 7)
+    label = pg.get_attribute(".rival-rig", "aria-label") or ""
+    check("targetable rig keeps the rival's name", "The Clockwork Hydra" in label, label)
+    pg.evaluate("""() => { battle = null; for (const k of Object.keys(CARDS)) if (!CARDS[k].junk) save.owned[k] = 2;
+        reward = {enemy: 0, choices: ['cannon']}; render(); }""")
+    pg.click("[data-reward]")
+    toast = pg.inner_text("#toast")
+    check("salvage toast says nothing was added", "added to your collection" not in toast, toast)
+
+
 def main():
+    sys.stdout.reconfigure(encoding="utf-8")  # Czech check names break a cp1252 console
     with sync_playwright() as p:
         browser = p.chromium.launch()
         page = browser.new_page(viewport={"width": 1366, "height": 900}, reduced_motion="reduce")

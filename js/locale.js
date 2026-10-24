@@ -14,7 +14,7 @@ const CZECH={
  'Mine Ore. Assemble machines.':'Těž rudu. Stav stroje.','Turn Power into firepower.':'Z energie udělej palebnou sílu.','Win cards. Build your own strategy.':'Vyhrávej karty. Vymysli vlastní strategii.',
  'THE WORKSHOP':'DÍLNA','Welcome to the junk drawer.':'Vítej v zásuvce se šrotem.','Build a 15-card deck. Up to two copies of each card.':'Sestav balíček s 15 kartami. Nejvýše dvě kopie každé karty.','Your deck is ready for the expedition.':'Balíček je připravený na výpravu.','Add or remove cards to bring your deck to exactly 15.':'Přidej nebo odeber karty, aby jich v balíčku bylo přesně 15.','Your current battle keeps the deck it started with.':'V rozehraném souboji zůstává původní balíček.',
  'Sir Drills-a-Lot':'Sir Vrtalot','Spicy Tea Kettle':'Pekelná konvice','The Peashooter':'Hrachomet','Sock Launcher 9000':'Ponožkomet 9000','Nibbles, Unlicensed':'Chroupal bez papírů','Grandma Hex':'Bába Kletba','DO NOT PUSH':'NEMAČKAT','Emergency Duct Tape':'Nouzová izolepa','Surprise Confetti':'Konfety s překvapením','Ooh, Shiny!':'Jé, to se leskne!','Haunted Toaster':'Strašidelný toustovač','Disco Death Ray':'Diskopaprsek smrti','Emotional Support Orb':'Koule psychické podpory','The Big Scooper':'Velká naběračka','Suspicious Soup':'Podezřelá polévka',
- 'Activate: gain 2 Ore.':'Aktivace: získej 2 rudy.','Activate: gain 2 Power.':'Aktivace: získej 2 energii.','Spend 1 Power: deal 3 damage.':'Zaplať 1 energii: způsob 3 poškození.','Spend 2 Power: deal 6 damage.':'Zaplať 2 energii: způsob 6 poškození.','Machine upgrades cost 1 less Ore.':'Vylepšení strojů stojí o 1 rudu méně.','Repair 3 Hull whenever you upgrade.':'Při každém vylepšení obnov 3 odolnost.','Gain 3 Power. Take 1 damage.':'Získej 3 energii. Utrpíš 1 poškození.','Repair 6 Hull.':'Obnov 6 odolnost.','Deal 5 damage to the rival rig.':'Způsob soupeřovu stroji 5 poškození.','Gain 3 Ore.':'Získej 3 rudy.','Activate: gain 3 Power.':'Aktivace: získej 3 energii.','Spend 2 Power: deal 8 damage.':'Zaplať 2 energii: způsob 8 poškození.','Your first tactic each turn grants 1 Power.':'První taktika v každém kole přidá 1 energii.','Activate: gain 4 Ore.':'Aktivace: získej 4 rudy.','Repair 10 Hull and gain 1 Ore.':'Obnov 10 odolnost a získej 1 rudu.',
+ 'Activate: gain 2 Ore.':'Aktivace: získej 2 rudy.','Activate: gain 2 Power.':'Aktivace: získej 2 energii.','Spend 1 Power: deal 3 damage.':'Zaplať 1 energii: způsob 3 poškození.','Spend 2 Power: deal 6 damage.':'Zaplať 2 energie: způsob 6 poškození.','Machine upgrades cost 1 less Ore.':'Vylepšení strojů stojí o 1 rudu méně.','Repair 3 Hull whenever you upgrade.':'Při každém vylepšení obnov 3 odolnost.','Gain 3 Power. Take 1 damage.':'Získej 3 energii. Utrpíš 1 poškození.','Repair 6 Hull.':'Obnov 6 odolnost.','Deal 5 damage to the rival rig.':'Způsob soupeřovu stroji 5 poškození.','Gain 3 Ore.':'Získej 3 rudy.','Activate: gain 3 Power.':'Aktivace: získej 3 energii.','Spend 2 Power: deal 8 damage.':'Zaplať 2 energie: způsob 8 poškození.','Your first tactic each turn grants 1 Power.':'První taktika v každém kole přidá 1 energii.','Activate: gain 4 Ore.':'Aktivace: získej 4 rudy.','Repair 10 Hull and gain 1 Ore.':'Obnov 10 odolnost a získej 1 rudu.',
  'Knighted himself. Still counts.':'Pasoval se sám. I to se počítá.','Brew setting: industrial accident.':'Režim vaření: průmyslová havárie.','Eat your vegetables. At speed.':'Zelenina je zdravá. Ne v téhle rychlosti.','One sock always goes missing. Now we know.':'Jedna ponožka se vždycky ztratí. Už víme proč.','The license was holding him back.':'Ty papíry ho jen brzdily.','Curses, biscuits, sensible upgrades.':'Kletby, sušenky, rozumná vylepšení.','Someone labeled it. Nobody listened.':'Cedulka tam byla. Nikdo ji nečetl.','Structural integrity is a mindset.':'Pevnost konstrukce je stav mysli.','Every party needs a blast radius.':'Každá párty potřebuje tlakovou vlnu.','The official mining strategy.':'Oficiální těžební strategie.','Two slices and a minor haunting.':'Dva tousty a menší posednutí.','The last dance is mandatory.':'Poslední tanec je povinný.','You are doing amazing, probably.':'Jde ti to skvěle. Nejspíš.','For industrial amounts of ice cream.':'Na průmyslové množství zmrzliny.','Do not ask what the chunks are.':'Neptej se, co jsou ty kousky.',
  'Bert & His Bucket':'Bert a jeho kýbl','Professor Oops':'Profesor Ups','The Middle Manager':'Vedoucí směny','An Extremely Big Frog':'Extrémně velká žába','Pebblebottom':'Šutrov','Oopsie Alley':'Ulička průšvihů','Department of Clanking':'Oddělení rachotu','The Moist Beyond':'Vlhké záhrobí',
  'Claims every rock is his pet. You have upset Gerald, the pebble.':'Každý kámen je prý jeho mazlíček. Právě jsi urazil oblázek Geralda.','Has seven degrees. Six are burn-related. The seventh is in dance.':'Má sedm titulů. Šest za popáleniny. Sedmý z tance.','Would like a quick chat about your mining KPIs. Repairs 4 Hull every third turn.':'Chce si promluvit o tvých těžebních výkazech. Každé třetí kolo obnoví 4 odolnost.','Ancient. Magical. Unreasonably round. You are standing on its lunch.':'Prastará. Kouzelná. Nesmyslně kulatá. Stojíš jí na obědě.',
@@ -104,7 +104,11 @@ Object.assign(CZECH,{
  'Three heads, zero manners. Every head bites harder, and they grow back.':'Tři hlavy, nula vychování. Každá hlava kousne silněji a dorůstají.',
  'While intact: +3 damage on every attack.':'Dokud vydrží: +3 poškození ke každému útoku.',
  'CERTIFIED HYDRA WRANGLER':'CERTIFIKOVANÝ KROTITEL HYDER','You conquered the deepest mine. Experiment with your deck and challenge the crews again.':'Pokořil jsi nejhlubší důl. Experimentuj s balíčkem a vyzvi posádky znovu.',
- 'The mines go deeper… four new rivals wait below.':'Doly jdou hlouběji… dole čekají čtyři noví soupeři.'
+ 'The mines go deeper… four new rivals wait below.':'Doly jdou hlouběji… dole čekají čtyři noví soupeři.',
+ 'Unused cards go to discard at turn end. Draw back to six.':'Na konci kola odhoď nepoužité karty. Dober si do šesti.',
+ 'Unused cards go to discard at turn end. Draw back to seven.':'Na konci kola odhoď nepoužité karty. Dober si do sedmi.',
+ 'Rivals show their next three actions. Some rivals have parts: click a part or the rival portrait to choose where your damage goes.':'Soupeři ukazují své příští tři akce. Někteří mají součásti: kliknutím na součást nebo na portrét soupeře zvolíš, kam míří tvé poškození.',
+ 'You already own two of every card. Nothing was added.':'Od každé karty už máš dvě. Nic nepřibylo.'
 });
 // Battle headers show rival titles in capitals.
 for(const e of ENEMIES)if(CZECH[e.title])CZECH[e.title.toUpperCase()]??=CZECH[e.title].toUpperCase();
@@ -128,11 +132,14 @@ function translateText(value,heroTitle=false){
   const title={'Dig weird.':'Šrot,','Build ':'pot a ','weirder.':'sláva.'};
   if(Object.hasOwn(title,value))return title[value];
  }
+ // A whole-text entry wins over the log patterns below, which would otherwise rewrite its first words.
+ if(Object.hasOwn(CZECH,value))return CZECH[value];
  let text=value
   .replace(/Activate: gain (\d+) (Ore|Power)\./g,(_,amount,kind)=>`Aktivace: získej ${amount} ${kind==='Ore'?(Number(amount)===1?'rudu':Number(amount)>=2&&Number(amount)<=4?'rudy':'rud'):(Number(amount)===1?'energii':'energie')}.`)
   .replace(/Spend (\d+) Power: deal (\d+) damage\./g,(_,cost,damage)=>`Zaplať ${cost} ${Number(cost)===1?'energii':'energie'}: způsob ${damage} poškození.`)
   .replace(/Activate: deal (\d+) damage\. When scrapped: deal 6 damage to the target\./g,'Aktivace: způsob $1 poškození. Při sešrotování: způsob cíli 6 poškození.')
-  .replace(/^Takes (\d+) Ore$/,(_,n)=>`Sebere ${n} ${czechResourceForm(n,'ore')}`)
+  .replace(/^Takes (\d+) Ore · 2 damage per missing Ore$/,(_,n)=>`Sebere ${n} ${czechResourceForm(n,'ore')} · 2 poškození za každou chybějící`)
+  .replace(/^Target (.+)$/,'Zamířit na: $1')
   .replace(/^Adds (\d+) Red Tape$/,'Přidá $1× úřední šiml')
   .replace(/^Repairs (\d+) Hull$/,'Obnoví $1 odolnosti')
   .replace(/(.*?) jammed (.*?)\./g,'$1 zasekl: $2.')
@@ -140,7 +147,7 @@ function translateText(value,heroTitle=false){
   .replace(/(.*?) added (\d+) Red Tape to your deck\./g,'$1 ti přidal do balíčku $2× úřední šiml.')
   .replace(/(.*?) regrew (.*?)\./g,'$1: dorostla $2.')
   .replace(/(.*?) collected (\d+) Ore\./g,(_,who,n)=>`${who} vybral ${n} ${czechResourceForm(n,'ore')}.`)
-  .replace(/(.*?) repaired (\d+) Hull\./g,'$1 obnovil $2 bodů odolnosti.')
+  .replace(/(.*?) repaired (\d+) Hull\./g,(_,who,n)=>`${who} obnovil ${n} ${Number(n)===1?'bod':Number(n)>=2&&Number(n)<=4?'body':'bodů'} odolnosti.`)
   .replace(/^(.*?) destroyed\.$/,'Zničeno: $1.')
   .replace(/Threw away (.*?)\./g,'Zahozeno: $1.')
   .replace(/You defeated the (.*?)\. /g,'Poražený soupeř: $1. ')

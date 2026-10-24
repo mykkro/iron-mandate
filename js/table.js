@@ -1,13 +1,4 @@
 /* Table presentation; existing card rules and save data are unchanged. */
-const originalPlay=play;
-play=function(i){
- const b=battle,k=b.hand[i],before=b.hand.length;
- originalPlay(i);
- if(b.hand.length<before&&CARDS[k].type==='tactic'){
-  b.lastTactic=k;
-  if(!reward&&view==='battle')renderBattle();
- }
-};
 function tablePile(kind,count,content,clickable=false){
  return `<${clickable?'button':'div'} class="table-pile ${kind} ${count?'':'is-empty'}" ${clickable?'id="inspect-discard" aria-label="Inspect discard pile"':''}><span class="pile-face">${content}</span><strong>${count}</strong><span class="pile-name">${kind==='draw-pile'?'Draw pile':'Discard pile'}</span></${clickable?'button':'div'}>`;
 }
@@ -32,7 +23,7 @@ function renderBattle(){
  <div class="player-layout"><div class="piles">${tablePile('draw-pile',b.deck.length,'<span class="card-back-mark">⚙</span><span>IRON MANDATE</span>')}${tablePile('discard-pile',b.discard.length,b.discard.length?`<span class="discard-symbol">${CARDS[b.discard.at(-1)].symbol}</span><span>${CARDS[b.discard.at(-1)].name}</span>`:'<span>↻</span><span>Nothing yet</span>',true)}</div>
  <div class="machine-zone"><div class="zone-label">MACHINES · ${b.machines.length} / 3</div><div class="table-machines">${[0,1,2].map(i=>b.machines[i]?machine(b.machines[i],i):`<div class="card-slot"><span>＋</span><b>Machine ${i+1}</b><small>Park nonsense here</small></div>`).join('')}</div></div>
  <div class="crew-zone"><div class="zone-label">CREW · ${b.crew.length} / 2</div><div class="table-crew">${[0,1].map(i=>b.crew[i]?`<div class="crew-mini"><span>${CARDS[b.crew[i]].symbol}</span><strong>${CARDS[b.crew[i]].name}</strong><small>${CARDS[b.crew[i]].text}</small></div>`:'<div class="crew-slot">＋<small>Crew seat<br>Snacks included</small></div>').join('')}</div></div></div></section>
- <section class="hand-zone" aria-label="Your hand"><div class="hand-heading"><span class="zone-label">YOUR HAND · ${b.hand.length} CARDS</span><span>Unused cards go to discard at turn end. Draw back to five.</span></div><div class="hand">${b.hand.map((k,i)=>card(k,`<button data-play="${i}" ${b.over||b[payResource(CARDS[k])]<CARDS[k].cost?'disabled':''}>${CARDS[k].type==='machine'?'Build':CARDS[k].type==='crew'?'Recruit':CARDS[k].junk?'Throw away':'Play'} · ${CARDS[k].cost} ${payResource(CARDS[k])==='power'?'Power':'Ore'}</button>`)).join('')}</div></section></div>
+ <section class="hand-zone" aria-label="Your hand"><div class="hand-heading"><span class="zone-label">YOUR HAND · ${b.hand.length} CARDS</span><span>Unused cards go to discard at turn end. Draw back to ${['five','six','seven'][handSize()-5]||handSize()}.</span></div><div class="hand">${b.hand.map((k,i)=>card(k,`<button data-play="${i}" ${b.over||b[payResource(CARDS[k])]<CARDS[k].cost?'disabled':''}>${CARDS[k].type==='machine'?'Build':CARDS[k].type==='crew'?'Recruit':CARDS[k].junk?'Throw away':'Play'} · ${CARDS[k].cost} ${payResource(CARDS[k])==='power'?'Power':'Ore'}</button>`)).join('')}</div></section></div>
  <div class="table-bottom"><details class="table-journal"><summary>Clank log · ${b.logs[0]}</summary>${b.logs.map(t=>`<p>${t}</p>`).join('')}</details><button id="leave">${b.over?'Return to expedition':'Retreat to camp'}</button></div>`;
  document.querySelector('#end').onclick=endTurn;
  document.querySelector('#leave').onclick=()=>{battle=null;view='campaign';render()};
