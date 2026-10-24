@@ -37,7 +37,7 @@
 .hand-zone .printed-card .rules-box p{line-height:1.35}
 .hand-zone .printed-card .activation-line{margin-bottom:4px;padding-bottom:4px}
 .hand-zone .printed-card .once-per-turn,.hand-zone .printed-card .flavor{display:none}
-.hand-zone .printed-card .rarity-label{margin-bottom:3px}
+.hand-zone .printed-card .rarity-label{margin-bottom:0}
 
 @media(max-width:650px){
  .battle-top{padding:6px 4px 8px;margin:0}

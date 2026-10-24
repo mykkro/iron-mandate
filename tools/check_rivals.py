@@ -377,6 +377,18 @@ def scenario_czech(pg):
     pg.evaluate("() => { language = 'en'; localizePage(); }")
 
 
+@scenario
+def scenario_type_and_rarity_share_a_line(pg):
+    pg.evaluate("() => { battle = null; reward = null; view = 'collection'; render(); }")
+    row = pg.evaluate("""() => { const t = document.querySelector('.collection-grid .card .type');
+        const label = t && t.querySelector('.rarity-label'); if (!label) return null;
+        const a = t.firstElementChild.getBoundingClientRect(), b = label.getBoundingClientRect();
+        return {sameLine: Math.abs(a.top + a.height / 2 - (b.top + b.height / 2)) < 4, typeLeft: a.left < b.left,
+                rightAligned: Math.abs(b.right - t.getBoundingClientRect().right) < 2}; }""")
+    check("rarity sits on the type line, type left, rarity right", row == {"sameLine": True, "typeLeft": True, "rightAligned": True}, row)
+    check("junk cards show no rarity", pg.evaluate("() => !/rarity-label/.test(card('redtape'))"))
+
+
 def main():
     with sync_playwright() as p:
         browser = p.chromium.launch()

@@ -7,6 +7,6 @@ const cardBeforeRarity=card;
 card=function(key,action='',extra=''){
  if(CARDS[key].junk)return cardBeforeRarity(key,action,extra);
  const tier=CARDS[key].rarity,info=CARD_TIERS[tier];
- return cardBeforeRarity(key,action,extra).replace('<article class="card ',`<article data-rarity="${tier}" class="card rarity-${tier} `).replace('</h3>',`</h3><div class="rarity-label"><span class="rarity-mark" aria-hidden="true">${info.mark}</span><span>${info.label}</span></div>`);
+ return cardBeforeRarity(key,action,extra).replace('<article class="card ',`<article data-rarity="${tier}" class="card rarity-${tier} `).replace(/<div class="type">(.*?)<\/div>/,(_,type)=>`<div class="type"><span>${type}</span><div class="rarity-label"><span class="rarity-mark" aria-hidden="true">${info.mark}</span><span>${info.label}</span></div></div>`);
 };
 render();

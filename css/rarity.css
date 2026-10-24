@@ -6,3 +6,7 @@
 .printed-card.crew .rarity-label>.rarity-mark{background:var(--rarity);color:#fff5dc;padding:2px 5px}
 #card-inspector .rarity-label{font-size:13px;margin:8px 0}#card-inspector .rarity-mark{font-size:12px;padding:4px 8px}
 @media(max-width:650px){.installed .rarity-label{gap:3px;font-size:8px;min-height:17px;margin-bottom:4px}.installed .rarity-mark{font-size:7px;min-width:16px;padding:1px 2px}.hand-zone .rarity-label{font-size:9px}}
+/* Type on the left, rarity on the right, sharing one line. */
+.printed-card .type{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.printed-card .type .rarity-label{margin:0;min-height:0;text-transform:none;letter-spacing:normal}
+#card-inspector .printed-card .type .rarity-label{margin:0}
