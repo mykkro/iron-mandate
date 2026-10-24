@@ -361,6 +361,22 @@ def scenario_new_cards_render(pg):
     check("workshop never shows red tape", "RED TAPE" not in names.upper())
 
 
+@scenario
+def scenario_czech(pg):
+    pg.evaluate("() => { language = 'cs'; localizePage(); }")
+    start(pg, 7, hand=["rummage", "wrench", "redtape"], power=3)
+    pg.wait_for_timeout(200)
+    text = pg.inner_text("main")
+    for english in ["NEXT ACTIONS", "Triple Bite", "Head I", "TARGET", "Lucky Rummage", "Wrench in the Works",
+                    "Red Tape", "Throw away", "While intact", "damage", "THE GEAR ABYSS"]:
+        check(f"czech replaces '{english}'", english.lower() not in text.lower(), english)
+    for czech in ["PŘÍŠTÍ AKCE", "Trojitý kousanec", "Hlava I", "CÍL", "Šťastné hrabání", "Klíč do soukolí", "Úřední šiml"]:
+        check(f"czech shows '{czech}'", czech.lower() in text.lower(), czech)
+    end_turn(pg)
+    check("czech opponent panel", "poškození" in pg.inner_text("#opponent-sequence"))
+    pg.evaluate("() => { language = 'en'; localizePage(); }")
+
+
 def main():
     with sync_playwright() as p:
         browser = p.chromium.launch()

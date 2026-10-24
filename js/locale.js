@@ -73,6 +73,41 @@ Object.assign(CZECH,{
 Object.assign(CZECH,{'Common':'Běžná','Uncommon':'Neobvyklá','Rare':'Vzácná','Unique':'Unikátní','Legendary':'Legendární'});
 Object.assign(CZECH,{'Dismiss crew':'Propustit','Dismiss for free. This card goes to your discard pile. No Ore is refunded.':'Propuštění je zdarma. Karta se přesune na odhazovací hromádku. Ruda se nevrací.','dismissed to discard pile.':'propuštění do odhazovací hromádky.'});
 Object.assign(CZECH,{'Ready next turn':'Připraveno příští kolo','New machines wait one turn':'Nové stroje čekají jedno kolo'});
+Object.assign(CZECH,{
+ 'NEXT ACTIONS':'PŘÍŠTÍ AKCE','NEXT':'PŘÍŠTÍ','THEN':'POTOM','LATER':'POZDĚJI','TARGET':'CÍL','BLOCKED':'ZABLOKOVÁNO','JAMMED':'ZASEKNUTO','SCRAPPED':'ZNIČENO',
+ 'Jammed until next turn':'Zaseknuto do příštího kola','Jammed until next turn.':'Zaseknuto do příštího kola.','Target the rival rig':'Zamířit na soupeřův stroj',
+ 'Jams a machine':'Zasekne stroj','Destroys a machine':'Zničí stroj','Regrows a head':'Nechá dorůst hlavu','Throw away':'Zahodit','junk':'harampádí','FINALE':'FINÁLE',
+ 'NEXT RIVAL TURN':'PŘÍŠTÍ TAH SOUPEŘE','UPGRADED MACHINES':'VYLEPŠENÉ STROJE','RIVAL ATTACKS':'ÚTOKY SOUPEŘE','HAND SIZE':'VELIKOST RUKY','JUNK':'HARAMPÁDÍ',
+ 'Lucky Rummage':'Šťastné hrabání','Paperwork Jam':'Papírová zácpa','Wrench in the Works':'Klíč do soukolí','Brass Umbrella':'Mosazný deštník','Gear Whisperer':'Zaříkávačka ozubenic',
+ 'Tin Bodyguard':'Plechový strážce','Overtime Ollie':'Přesčasový Olda','Scrap Golem':'Šrotový golem','Spite Engine':'Motor zášti','Red Tape':'Úřední šiml',
+ 'Draw 2 cards.':'Dober si 2 karty.','Move the rival’s next action to the back of its queue.':'Přesuň příští akci soupeře na konec jeho fronty.',
+ 'Deal 8 damage to the target if it is a part, otherwise 4 to the rig.':'Způsob 8 poškození cíli, pokud je to součást; jinak 4 poškození stroji.',
+ 'Block all damage from the rival’s next turn.':'Zablokuj veškeré poškození z příštího tahu soupeře.',
+ 'Upgraded machines produce +1 extra Ore, Power or damage.':'Vylepšené stroje dávají o 1 rudu, energii nebo poškození navíc.',
+ 'Every rival attack deals 2 less damage.':'Každý útok soupeře způsobí o 2 poškození méně.','Draw up to 6 cards instead of 5.':'Dobírej si do 6 karet místo 5.',
+ 'Spend 1 Power: deal damage equal to the damage you took last rival turn (max 10).':'Zaplať 1 energii: způsob tolik poškození, kolik jsi utrpěl v minulém tahu soupeře (nejvýše 10).',
+ 'Cannot be played. Pay 1 Power to throw it away for the rest of the battle.':'Nedá se zahrát. Za 1 energii ho do konce bitvy zahodíš.',
+ 'Somewhere in here is a plan. Also a sandwich.':'Někde tu je plán. A taky svačina.','Please submit your attack in triplicate.':'Útok prosím podejte ve třech kopiích.',
+ 'Precision engineering, applied imprecisely.':'Precizní technika, nepřesně použitá.','Forecast: heavy shrapnel, then clearing.':'Předpověď: silné šrapnely, později vyjasnění.',
+ 'She asks the gears nicely. They listen.':'Ozubenic se hezky zeptá. A ony poslechnou.','Takes hits. Takes no questions.':'Bere rány. Nebere otázky.',
+ 'Coffee is a food group.':'Káva je potravinová skupina.','Assembly optional. Disassembly spectacular.':'Montáž nepovinná. Demontáž velkolepá.',
+ 'Runs on grudges. Excellent mileage.':'Jezdí na zášť. Skvělá spotřeba.','Form 27-B, now in triplicate.':'Formulář 27-B, nyní ve třech kopiích.',
+ 'Sir Reginald Tax':'Sir Reginald Daň','Tollgate Ridge':'Mýtný hřbet','Audit':'Audit','Collect Taxes':'Výběr daní',
+ 'Collects a toll on every rock, breath and bad idea. Takes your Ore every few turns.':'Vybírá mýto z každého kamene, nádechu a hloupého nápadu. Každých pár kol ti sebere rudu.',
+ 'Madame Corrosion':'Madame Koroze','The Rust Marsh':'Rezavá bažina','Rust Spray':'Rezavá sprška','Seize Up':'Zadření','Corrode':'Koroze','Rust Cauldron':'Rezavý kotel',
+ 'Brews rust by the bucket. Jams your machines and dissolves the ones you never upgraded.':'Vaří rez po kýblech. Zasekává ti stroje a rozpouští ty, které jsi nevylepšil.',
+ 'While intact: Corrode destroys a machine.':'Dokud vydrží: Koroze ničí stroje.',
+ 'The Bureaucrat':'Byrokrat','Ministry of Forms':'Ministerstvo formulářů','Stamp of Disapproval':'Razítko nesouhlasu','File in Triplicate':'Ve třech kopiích','Filing Cabinet':'Kartotéka',
+ 'Has a stamp for everything, including you. Buries your deck in Red Tape.':'Má razítko na všechno, i na tebe. Zasype ti balíček úředním šimlem.',
+ 'While intact: repairs 3 Hull each turn.':'Dokud vydrží: každé kolo obnoví 3 body odolnosti.',
+ 'The Clockwork Hydra':'Strojová hydra','The Gear Abyss':'Propast ozubenic','Triple Bite':'Trojitý kousanec','Regrow':'Dorůstání','Head I':'Hlava I','Head II':'Hlava II','Head III':'Hlava III',
+ 'Three heads, zero manners. Every head bites harder, and they grow back.':'Tři hlavy, nula vychování. Každá hlava kousne silněji a dorůstají.',
+ 'While intact: +3 damage on every attack.':'Dokud vydrží: +3 poškození ke každému útoku.',
+ 'CERTIFIED HYDRA WRANGLER':'CERTIFIKOVANÝ KROTITEL HYDER','You conquered the deepest mine. Experiment with your deck and challenge the crews again.':'Pokořil jsi nejhlubší důl. Experimentuj s balíčkem a vyzvi posádky znovu.',
+ 'The mines go deeper… four new rivals wait below.':'Doly jdou hlouběji… dole čekají čtyři noví soupeři.'
+});
+// Battle headers show rival titles in capitals.
+for(const e of ENEMIES)if(CZECH[e.title])CZECH[e.title.toUpperCase()]??=CZECH[e.title].toUpperCase();
 // Long phrases take precedence; token boundaries keep names and words intact.
 const escapeRegex=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 const phrasePattern=new RegExp('(?<![\\p{L}])(?:'+Object.keys(CZECH).sort((a,b)=>b.length-a.length).map(escapeRegex).join('|')+')(?![\\p{L}])','gu');
@@ -96,6 +131,18 @@ function translateText(value,heroTitle=false){
  let text=value
   .replace(/Activate: gain (\d+) (Ore|Power)\./g,(_,amount,kind)=>`Aktivace: získej ${amount} ${kind==='Ore'?(Number(amount)===1?'rudu':Number(amount)>=2&&Number(amount)<=4?'rudy':'rud'):(Number(amount)===1?'energii':'energie')}.`)
   .replace(/Spend (\d+) Power: deal (\d+) damage\./g,(_,cost,damage)=>`Zaplať ${cost} ${Number(cost)===1?'energii':'energie'}: způsob ${damage} poškození.`)
+  .replace(/Activate: deal (\d+) damage\. When scrapped: deal 6 damage to the target\./g,'Aktivace: způsob $1 poškození. Při sešrotování: způsob cíli 6 poškození.')
+  .replace(/^Takes (\d+) Ore$/,(_,n)=>`Sebere ${n} ${czechResourceForm(n,'ore')}`)
+  .replace(/^Adds (\d+) Red Tape$/,'Přidá $1× úřední šiml')
+  .replace(/^Repairs (\d+) Hull$/,'Obnoví $1 odolnosti')
+  .replace(/(.*?) jammed (.*?)\./g,'$1 zasekl: $2.')
+  .replace(/(.*?) dissolved (.*?)\./g,'$1 rozpustil: $2.')
+  .replace(/(.*?) added (\d+) Red Tape to your deck\./g,'$1 ti přidal do balíčku $2× úřední šiml.')
+  .replace(/(.*?) regrew (.*?)\./g,'$1: dorostla $2.')
+  .replace(/(.*?) collected (\d+) Ore\./g,(_,who,n)=>`${who} vybral ${n} ${czechResourceForm(n,'ore')}.`)
+  .replace(/(.*?) repaired (\d+) Hull\./g,'$1 obnovil $2 bodů odolnosti.')
+  .replace(/^(.*?) destroyed\.$/,'Zničeno: $1.')
+  .replace(/Threw away (.*?)\./g,'Zahozeno: $1.')
   .replace(/You defeated the (.*?)\. /g,'Poražený soupeř: $1. ')
   .replace(/Built (.*?)\./g,'Postaveno: $1.')
   .replace(/Played (.*?)\./g,'Zahráno: $1.')
