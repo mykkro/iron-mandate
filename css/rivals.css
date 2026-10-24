@@ -1,0 +1,13 @@
+/* Rival action queue, destroyable parts and targeting. */
+.intent-zone{min-width:0;text-align:left}
+.rival-queue{list-style:none;margin:0;padding:0;display:flex;gap:8px}
+.queue-card{position:relative;flex:0 0 132px;min-height:92px;padding:8px 10px;border:2px solid #29321c;border-radius:10px;background:#c8c0a2 url('../assets/images/grit.svg');color:#24291d;display:flex;flex-direction:column;gap:3px;box-shadow:2px 3px 0 #11170d}
+.queue-card.later{opacity:.72}
+.queue-when{font:600 8px 'IBM Plex Mono',monospace;letter-spacing:.6px;color:#4a5534}
+.queue-card.next .queue-when{color:#7a2f1c}
+.queue-icon{font-size:20px;line-height:1}
+.queue-card strong{font:800 15px 'Barlow Condensed',Impact,sans-serif;line-height:1.05}
+.queue-effect{font-size:11px;color:#6b2c1e}
+.stamp{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-12deg);padding:2px 8px;border:3px solid #8f2a1a;border-radius:4px;color:#8f2a1a;background:#f1e7cbd9;font:800 16px 'Barlow Condensed',Impact,sans-serif;letter-spacing:1px;pointer-events:none;z-index:3;white-space:nowrap}
+.queue-card.blocked .stamp{border-color:#2f5d8a;color:#2f5d8a}
+@media(max-width:650px){.rival-queue{overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:4px}.queue-card{flex-basis:118px;scroll-snap-align:start}}

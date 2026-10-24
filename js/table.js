@@ -1,12 +1,4 @@
 /* Table presentation; existing card rules and save data are unchanged. */
-const originalEndTurn=endTurn;
-endTurn=function(){
- if(battle&&!battle.over){
-  const e=ENEMIES[battle.enemy];
-  (battle.actionHistory??=[]).push({name:e.intent,damage:damageNext(),turn:battle.turn,repair:battle.enemy===2&&battle.turn%3===0});
- }
- originalEndTurn();
-};
 const originalPlay=play;
 play=function(i){
  const b=battle,k=b.hand[i],before=b.hand.length;
@@ -34,7 +26,7 @@ function renderBattle(){
  app.innerHTML=`<div class="battle-top"><div><div class="eyebrow">${e.title.toUpperCase()} · TURN ${b.turn}</div><h2>${b.over?'The wheels have left the chat.':'Welcome to the clank table.'}</h2></div><div class="resources"><div class="resource"><b>${b.ore}</b> Ore</div><div class="resource"><b>${b.power}</b> Power</div><button class="primary" id="end" ${b.over?'disabled':''}>End turn →</button></div></div>
  <div class="game-table">
  <section class="opponent-side" aria-label="Rival play area"><div class="table-status"><div><span class="eyebrow">RIVAL PLAY AREA</span><h3>${e.icon} ${e.name}</h3></div><div class="hull-label">${b.foe} / ${e.hull} Hull<div class="health"><i style="width:${b.foe/e.hull*100}%"></i></div></div></div>
- <div class="opponent-layout"><div class="rival-rig"><span class="rival-portrait">${e.icon}</span><strong>${e.name}</strong><span>Automated rival rig</span></div><div class="intent-zone"><div class="zone-label">NEXT ACTION</div><article class="intent-card"><span class="intent-icon">${b.enemy===3?'🐸':'💥'}</span><h3>${e.intent}</h3><b>${damageNext()} damage</b>${b.enemy===2&&b.turn%3===0?'<span>Also repairs 4 Hull</span>':''}</article></div><div class="action-pile"><div class="zone-label">COMPLETED ACTIONS · ${history.length}</div><div class="past-action ${last?'':'is-empty'}">${last?`<span>💨</span><strong>${last.name}</strong><span>Turn ${last.turn} · ${last.damage} damage${last.repair?' · +4 Hull':''}</span>`:'No bonks yet.'}</div></div></div></section>
+ <div class="opponent-layout"><div class="rival-rig"><span class="rival-portrait">${e.icon}</span><strong>${e.name}</strong><span>Automated rival rig</span></div><div class="intent-zone"></div><div class="action-pile"><div class="zone-label">COMPLETED ACTIONS · ${history.length}</div><div class="past-action ${last?'':'is-empty'}">${last?`<span>💨</span><strong>${last.name}</strong><span>Turn ${last.turn} · ${last.damage} damage${last.repair?' · +4 Hull':''}</span>`:'No bonks yet.'}</div></div></div></section>
  <section class="shared-strip" aria-label="Common play area"><span class="zone-label">COMMON AREA · LAST TACTIC</span>${b.lastTactic?`<span class="last-tactic">${CARDS[b.lastTactic].symbol} <b>${CARDS[b.lastTactic].name}</b><span>${CARDS[b.lastTactic].text}</span></span>`:'<span class="table-hint">A suspiciously clean patch of table. Play a tactic to fix that.</span>'}<span class="table-hint">Rival damage grows every 3 turns.</span></section>
  <section class="player-side" aria-label="Your play area"><div class="table-status"><div><span class="eyebrow">YOUR PLAY AREA</span><h3>🛠️ The Probably Fine</h3></div><div class="hull-label">${b.hull} / 40 Hull<div class="health"><i style="width:${b.hull/40*100}%"></i></div></div></div>
  <div class="player-layout"><div class="piles">${tablePile('draw-pile',b.deck.length,'<span class="card-back-mark">⚙</span><span>IRON MANDATE</span>')}${tablePile('discard-pile',b.discard.length,b.discard.length?`<span class="discard-symbol">${CARDS[b.discard.at(-1)].symbol}</span><span>${CARDS[b.discard.at(-1)].name}</span>`:'<span>↻</span><span>Nothing yet</span>',true)}</div>

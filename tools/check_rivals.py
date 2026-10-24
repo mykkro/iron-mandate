@@ -96,6 +96,60 @@ def scenario_missing_art_falls_back(pg):
     check("missing art becomes emoji fallback", 'class="art-missing"' in html and "🧪" in html, html)
 
 
+@scenario
+def scenario_queue_shows_three_and_cycles(pg):
+    start(pg, 1)
+    s = snap(pg)
+    check("queue has 3 actions", len(s["queue"]) == 3, s["queue"])
+    texts = pg.eval_on_selector_all(".rival-queue .queue-card", "els => els.map(e => e.innerText)")
+    check("queue rendered with 3 cards", len(texts) == 3, texts)
+    check("third Oops action shows barrage damage", "7 damage" in texts[2], texts)
+    end_turn(pg)
+    check("queue refilled after turn", len(snap(pg)["queue"]) == 3)
+
+
+@scenario
+def scenario_queue_preview_escalates(pg):
+    start(pg, 0, turn=3)
+    texts = pg.eval_on_selector_all(".rival-queue .queue-card", "els => els.map(e => e.innerText)")
+    check("turn 3 preview: 3, then 4, then 4 damage",
+          ["3 damage" in texts[0], "4 damage" in texts[1], "4 damage" in texts[2]] == [True, True, True], texts)
+
+
+@scenario
+def scenario_blocked_turn_deals_nothing(pg):
+    start(pg, 0, blocked=True)
+    end_turn(pg)
+    s = snap(pg)
+    check("blocked attack deals 0", s["hull"] == 40, s)
+    check("block clears after the rival turn", s["blocked"] is False, s)
+    check("last damage taken recorded as 0", s["last"] == 0, s)
+    start(pg, 0)
+    end_turn(pg)
+    check("last damage taken recorded", snap(pg)["last"] == 3)
+
+
+@scenario
+def scenario_leaving_mid_turn_is_safe(pg):
+    pg.emulate_media(reduced_motion="no-preference")
+    start(pg, 0)
+    pg.evaluate("() => { endTurn(); battle = null; view = 'campaign'; render(); }")
+    start(pg, 0)
+    pg.wait_for_timeout(900)
+    check("new battle untouched by the abandoned rival turn", snap(pg)["hull"] == 40)
+    pg.emulate_media(reduced_motion="reduce")
+
+
+@scenario
+def scenario_opponent_panel_shows_result(pg):
+    start(pg, 2, foe=30, turn=3)
+    pg.evaluate("() => { battle.queue = [ENEMIES[2].script[2], ENEMIES[2].script[0], ENEMIES[2].script[1]]; }")
+    end_turn(pg)
+    panel = pg.inner_text("#opponent-sequence")
+    check("panel shows attack result", "5 damage" in panel and "40 → 35" in panel, panel)
+    check("panel shows repair result", "+4 Hull" in panel, panel)
+
+
 def main():
     with sync_playwright() as p:
         browser = p.chromium.launch()
