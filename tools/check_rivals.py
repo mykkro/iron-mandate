@@ -389,6 +389,16 @@ def scenario_type_and_rarity_share_a_line(pg):
     check("junk cards show no rarity", pg.evaluate("() => !/rarity-label/.test(card('redtape'))"))
 
 
+@scenario
+def scenario_crew_has_no_view_button(pg):
+    start(pg, 0, crew=["mechanic"])
+    check("crew seat has no separate View card button", pg.query_selector(".crew-mini [data-view-crew]") is None)
+    check("crew seat keeps Dismiss", pg.query_selector(".crew-mini [data-dismiss-crew]") is not None)
+    pg.click(".crew-mini>span")
+    check("crew portrait opens the card preview", pg.evaluate("() => document.querySelector('#card-inspector').open"))
+    pg.evaluate("() => document.querySelector('#card-inspector').close()")
+
+
 def main():
     with sync_playwright() as p:
         browser = p.chromium.launch()

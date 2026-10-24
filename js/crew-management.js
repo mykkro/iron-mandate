@@ -21,8 +21,7 @@ renderBattle=function(){
  battleBeforeCrewManagement();
  app.querySelectorAll('.crew-mini').forEach((el,index)=>{
   const controls=document.createElement('div');controls.className='crew-management';
-  controls.innerHTML=`<button data-view-crew="${index}">View card</button><button data-dismiss-crew="${index}" ${battle.over||battle.resolving?'disabled':''}>Dismiss crew</button>`;
-  controls.querySelector('[data-view-crew]').onclick=()=>inspectHiredCrew(index);
+  controls.innerHTML=`<button data-dismiss-crew="${index}" ${battle.over||battle.resolving?'disabled':''}>Dismiss crew</button>`;
   controls.querySelector('[data-dismiss-crew]').onclick=()=>dismissCrew(index);
   el.append(controls);
  });
