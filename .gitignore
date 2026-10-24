@@ -19,3 +19,5 @@ Thumbs.db
 
 # Hand-drawn source art (game uses the JPGs; regenerate with tools/convert_handdrawn.py)
 assets/images/handdrawn/*.png
+
+docs/superpowers/
