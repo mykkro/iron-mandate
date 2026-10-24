@@ -84,6 +84,18 @@ def scenario_existing_rivals_unchanged(pg):
     check("manager repairs 4 on turns 3 and 6", foes == [30, 30, 34, 34, 34, 38], f"got {foes}")
 
 
+@scenario
+def scenario_missing_art_falls_back(pg):
+    html = pg.evaluate("""() => {
+        ART_FALLBACK.nonexistent_art = '🧪';
+        const box = document.createElement('div');
+        box.innerHTML = paintedAsset('nonexistent_art');
+        document.body.append(box);
+        return new Promise(r => setTimeout(() => { r(box.innerHTML); box.remove(); }, 400));
+    }""")
+    check("missing art becomes emoji fallback", 'class="art-missing"' in html and "🧪" in html, html)
+
+
 def main():
     with sync_playwright() as p:
         browser = p.chromium.launch()

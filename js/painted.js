@@ -1,8 +1,8 @@
-/* Generated raster artwork: small inline images also serve crew/pile portraits. */
-function paintedAsset(key){return `<img class="painted-art" data-art="${key}" src="assets/images/handdrawn/${key}.jpg" alt="" loading="lazy" decoding="async">`}
-for(const key of Object.keys(CARDS))CARDS[key].symbol=paintedAsset(key);
-ENEMIES[0].icon=paintedAsset('bert');
-ENEMIES[1].icon=paintedAsset('mechanic');
-ENEMIES[2].icon=paintedAsset('foreman');
-ENEMIES[3].icon=paintedAsset('frog');
+/* Generated raster artwork: small inline images also serve crew/pile portraits. Missing files fall back to the card's emoji. */
+const ART_FALLBACK={};
+function artMissing(img){const s=document.createElement('span');s.className='art-missing';s.setAttribute('aria-hidden','true');s.textContent=ART_FALLBACK[img.dataset.art]||'⚙️';img.replaceWith(s)}
+function paintedAsset(key){return `<img class="painted-art" data-art="${key}" src="assets/images/handdrawn/${key}.jpg" alt="" loading="lazy" decoding="async" onerror="artMissing(this)">`}
+for(const key of Object.keys(CARDS)){ART_FALLBACK[key]=CARDS[key].symbol;CARDS[key].symbol=paintedAsset(key)}
+const LEGACY_PORTRAITS=['bert','mechanic','foreman','frog'];
+ENEMIES.forEach((e,i)=>{const key=e.portrait||LEGACY_PORTRAITS[i];if(!key)return;ART_FALLBACK[key]??=e.icon;e.icon=paintedAsset(key)});
 render();
