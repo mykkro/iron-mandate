@@ -1,0 +1,26 @@
+/* Price and effect badges sit on top of the art, so the picture takes the full top of the card. */
+.printed-card .card-corners{position:absolute;top:6px;left:6px;right:6px;z-index:2;min-height:0;margin:0;pointer-events:none}
+.printed-card .art .card-corners .price-label,.printed-card .art .card-corners .effect-timing.timing-on-play{display:none}
+.printed-card .art .card-corners .effect-timing{margin-top:3px;padding:1px 4px;background:#1c2214d9;color:#e6e2c4;border-radius:3px;font-size:7px}
+.printed-card .art .card-corners .effect-badge,.printed-card .art .card-corners .illustrated-cost{box-shadow:1px 2px 0 #11170bcc}
+
+.printed-card .art{height:165px}
+.hand-zone .printed-card .art{height:125px}
+.installed .card.printed-card .art{height:125px}
+#discard-view .printed-card .art{height:150px}
+#card-inspector .card.printed-card .art{height:min(360px,44dvh)}
+#card-inspector .printed-card .card-corners{top:10px;left:10px;right:10px;min-height:0;margin:0}
+#card-inspector .printed-card .art .card-corners .effect-timing{font-size:10px;padding:2px 6px}
+
+/* Rounded table pieces to match the cards. */
+.table-pile,.card-slot,.crew-slot,.crew-mini{border-radius:12px}
+.table-pile strong,.pile-name{border-radius:6px}
+
+@media(max-width:650px){
+ .printed-card .card-corners{top:4px;left:4px;right:4px}
+ .hand-zone .printed-card .art{height:112px}
+ .installed .card.printed-card .art,.installed .card .art:has(.painted-art){height:88px}
+ #discard-view .printed-card .art{height:120px}
+ .printed-card .art .card-corners .effect-timing{font-size:6px;padding:1px 3px}
+ .table-pile,.card-slot,.crew-slot,.crew-mini{border-radius:9px}
+}

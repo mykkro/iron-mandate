@@ -1,0 +1,62 @@
+/* Denser battle table: sticky turn bar, one-row rival area, slim hand cards. */
+.battle-top{position:sticky;top:0;z-index:6;background:#24291ff5;backdrop-filter:blur(8px);margin:0 0 14px;padding:8px 0;border-bottom:2px solid #11180c}
+.battle-top h2{font-size:22px}
+.battle-top .resources{gap:8px}
+.battle-top .resource{padding:4px 10px}
+.battle-top .resource>.resource-icon{width:28px;height:28px}
+.battle-top .resource b{font-size:22px}
+.battle-top #end{min-height:44px}
+.hull-chip>span{display:flex;align-items:baseline;gap:3px}
+.hull-chip small{font-size:9px;letter-spacing:.5px;text-transform:uppercase;margin-right:3px}
+.hull-chip.hull-rival{background-color:#c09a86}
+
+/* Rival area: portrait, next action and the live opponent turn side by side. */
+.opponent-side{padding:12px 18px}
+.opponent-side .table-status{margin-bottom:8px}
+.opponent-layout{grid-template-columns:auto auto minmax(0,1fr);gap:20px;max-width:none;align-items:start}
+.rival-rig>strong,.rival-rig>span:last-child,.opponent-layout .action-pile{display:none}
+.rival-portrait .painted-art{width:96px;height:84px}
+.intent-zone .zone-label{margin-bottom:4px}
+.intent-card{min-height:0;padding:8px 14px;transform:none}
+.intent-card .intent-icon{font-size:20px}
+.intent-card h3{font-size:16px}
+.opponent-layout .opponent-sequence{margin:0;padding:0;border:0}
+.opponent-layout .sequence-heading{margin-bottom:6px}
+.opponent-layout .sequence-heading h3{font-size:14px;letter-spacing:.5px}
+.opponent-layout .sequence-heading button{min-height:32px;padding:4px 9px}
+.opponent-layout .opponent-turn-label{margin:4px 0}
+.opponent-layout .opponent-event{padding:6px 10px}
+.opponent-layout .event-effect{margin-top:3px}
+
+/* Hand: the big preview holds the full card, so hand cards drop flavor and spacing. */
+.hand-zone{margin-top:12px;padding-top:10px}
+.hand-zone .printed-card .art{height:72px}
+.hand-zone .printed-card h3{min-height:0;margin:6px 0 3px}
+.hand-zone .printed-card .type{min-height:0;padding:3px 0;margin-bottom:5px}
+.hand-zone .printed-card .rules-box{min-height:0;padding:5px 7px;margin-bottom:6px}
+.hand-zone .printed-card .rules-box p{line-height:1.35}
+.hand-zone .printed-card .activation-line{margin-bottom:4px;padding-bottom:4px}
+.hand-zone .printed-card .once-per-turn,.hand-zone .printed-card .flavor{display:none}
+.hand-zone .printed-card .rarity-label{margin-bottom:3px}
+
+@media(max-width:650px){
+ .battle-top{padding:6px 4px 8px;margin:0}
+ .battle-top .resources{grid-template-columns:repeat(4,1fr) 1.3fr;gap:5px}
+ .battle-top .resource{padding:4px;flex-direction:column;gap:1px;font-size:9px}
+ .battle-top .resource>.resource-icon{width:20px;height:20px}
+ .battle-top .resource b{font-size:17px}
+ .battle-top #end{font-size:12px;padding:6px}
+ .hull-chip small{display:none}
+ .opponent-layout{grid-template-columns:auto minmax(0,1fr);gap:10px}
+ .opponent-layout .opponent-sequence{grid-column:1/-1}
+ .rival-rig{grid-column:auto;flex-direction:column}
+ .rival-portrait .painted-art{width:64px;height:56px}
+ .intent-card{max-width:none}
+}
+
+/* Built machines: the preview shows type and rarity, so the table card keeps only what you act on. */
+body.in-battle main{padding-top:16px}
+.installed .printed-card .type,.installed .printed-card .rarity-label{display:none}
+.installed .printed-card h3{min-height:0;margin:6px 0 4px}
+.installed .printed-card .installed-output{min-height:0;margin:2px 0 6px}
+.player-side .table-status{margin-bottom:8px}

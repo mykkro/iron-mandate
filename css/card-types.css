@@ -1,0 +1,9 @@
+/* Muted per-type card stock and rounded corners. */
+.card.printed-card{border-radius:12px}
+.card.printed-card[data-card-type="machine"]{background-color:#c3b896}
+.card.printed-card[data-card-type="tactic"]{background-color:#c8ab98}
+.card.printed-card[data-card-type="crew"]{background-color:#abb69a}
+.card.printed-card .art{border-radius:7px}
+.installed.exhausted .card.printed-card{background-color:#92927b}
+#card-inspector .card.printed-card{border-radius:16px}
+@media(max-width:650px){.installed .card.printed-card,.hand-zone .card.printed-card{border-radius:9px}.card.printed-card .art{border-radius:5px}}

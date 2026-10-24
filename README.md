@@ -41,4 +41,4 @@ Regenerate the sound effects with `python tools/generate_sounds.py` (Python stan
 
 Card rarity tiers are Common, Uncommon, Rare, Unique, and Legendary, defined in `js/rarity.js`. Rarity is shown with a label, rank, and frame accent. It does not change costs or the current two-copy deck limit.
 
-The active art set is in `assets/images/handdrawn/`: ink contours, cross-hatching, and watercolor washes on textured paper. Earlier painted versions remain in `assets/images/` as backups. Resource icons are in `assets/icons/`.
+The active art set is in `assets/images/handdrawn/`: ink contours, cross-hatching, and watercolor washes on textured paper. The game loads the JPG copies; the full-quality source PNGs are kept locally but git-ignored (regenerate the JPGs with `python tools/convert_handdrawn.py`). Earlier painted versions remain in `assets/images/` as backups. Resource icons are in `assets/icons/`.

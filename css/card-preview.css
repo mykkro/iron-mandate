@@ -1,0 +1,10 @@
+/* Larger card inspector, plus click targets that open it from the battle table. */
+#card-inspector{width:min(94vw,500px);max-width:none;max-height:94dvh}
+#card-inspector .card{padding:18px}
+#card-inspector .card .art,#card-inspector .card .art:has(.painted-art){height:min(300px,38dvh)}
+#card-inspector .card h3{font-size:33px}
+#card-inspector .printed-card .rules-box p{font-size:17px}
+#card-inspector .flavor{font-size:14px}
+.preview-target{cursor:zoom-in}
+.preview-target:focus-visible{outline:3px solid #d5e448;outline-offset:2px}
+@media(hover:hover){.preview-target:hover{filter:brightness(1.12)}}

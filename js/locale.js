@@ -1,6 +1,6 @@
 /* Localize rendered text only: card IDs, save data, and rules remain language-neutral. */
 const CZECH={
- 'Expedition':'Výprava','Workshop':'Dílna','Field guide':'Průvodce','DIGGING OUR OWN TROUBLE':'KOPÁME SI VLASTNÍ PRŮŠVIH','LICENSED TO MAKE A MESS':'POVOLENÍ DĚLAT BORDEL',
+ 'Expedition':'Výprava','YOU':'TY','RIVAL':'SOUPEŘ','Workshop':'Dílna','Field guide':'Průvodce','DIGGING OUR OWN TROUBLE':'KOPÁME SI VLASTNÍ PRŮŠVIH','LICENSED TO MAKE A MESS':'POVOLENÍ DĚLAT BORDEL',
  "PROSPECTOR'S HANDBOOK":'PŘÍRUČKA PROSPEKTORA','Welcome, future workplace incident.':'Vítej, budoucí pracovní úraze.',
  'Destroy the rival rig before it destroys yours. Each turn, draw to five cards and gain 3 Power. Ore carries over; Power refreshes each turn.':'Znič soupeřův stroj dřív, než zničí ten tvůj. Každé kolo si dober do pěti karet a získej 3 energii. Ruda zůstává do dalších kol; energie se každé kolo obnoví.',
  ' machines with Ore. Each machine activates once per turn, starting on the turn after it is built. Drills produce Ore, boilers produce Power, and weapons damage the rival rig.':' stroje za rudu. Každý stroj můžeš aktivovat jednou za kolo, a to až od následujícího kola po postavení. Vrtáky těží rudu, kotle vyrábějí energii a zbraně poškozují soupeřův stroj.',
@@ -85,7 +85,7 @@ function czechResourceForm(amount,kind){
 function czechQuantities(text){
  return text.replace(/(\d+)\s+(?:ruda|rudu|rudy|rud)(?![\p{L}])/gu,(_,n)=>`${n} ${czechResourceForm(n,'ore')}`)
   .replace(/(\d+)\s+(?:energie|energii)(?![\p{L}])/gu,(_,n)=>`${n} ${czechResourceForm(n,'power')}`)
-  .replace(/(\d+)\s+karet(?![\p{L}])/gu,(_,n)=>`${n} ${Number(n)===1?'karta':Number(n)>=2&&Number(n)<=4?'karty':'karet'}`);
+  .replace(/(\d+)\s+(karet|KARET)(?![\p{L}])/gu,(_,n,word)=>{const form=Number(n)===1?'karta':Number(n)>=2&&Number(n)<=4?'karty':'karet';return `${n} ${word==='KARET'?form.toUpperCase():form}`});
 }
 function translateText(value,heroTitle=false){
  if(language!=='cs')return value;
