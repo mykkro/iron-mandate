@@ -73,6 +73,28 @@ function queueMarkup(b){
 const battleBeforeRivals=renderBattle;
 renderBattle=function(){
  battleBeforeRivals();
- app.querySelector('.intent-zone').innerHTML=queueMarkup(battle);
+ const b=battle,zone=app.querySelector('.intent-zone');
+ zone.innerHTML=queueMarkup(b)+partsMarkup(b);
+ zone.querySelectorAll('[data-target]').forEach(el=>el.onclick=()=>setTarget(el.dataset.target));
+ markRigTarget(b);
 };
+function targetPart(b=battle){return b.target==='rig'?null:livingParts(b).find(p=>p.id===b.target)||null}
+function setTarget(id){const b=battle;if(!b||b.over)return;b.target=livingParts(b).some(p=>p.id===id)?id:'rig';render()}
+function dealDamage(amount){
+ const b=battle,part=targetPart(b);
+ if(!part){b.foe-=amount;return}
+ part.hull=Math.max(0,part.hull-amount);
+ if(!part.hull){part.destroyed=true;b.target='rig';log(`${part.name} destroyed.`)}
+}
+function partsMarkup(b){
+ if(!b.parts.length)return '';
+ return `<div class="rival-parts">${b.parts.map(p=>`<button class="rival-part ${p.destroyed?'destroyed':''} ${b.target===p.id?'is-target':''}" data-target="${p.id}" aria-pressed="${b.target===p.id}" ${p.destroyed||b.over?'disabled':''}><strong>${p.name}</strong><span class="part-hull">${p.hull} / ${p.max} Hull</span><span class="health"><i style="width:${p.hull/p.max*100}%"></i></span><small>${p.text}</small>${b.target===p.id?'<em class="target-tag">🎯 TARGET</em>':''}${p.destroyed?'<span class="stamp">SCRAPPED</span>':''}</button>`).join('')}</div>`;
+}
+function markRigTarget(b){
+ const rig=app.querySelector('.rival-rig');if(!rig||!b.parts.length)return;
+ rig.classList.add('targetable');rig.classList.toggle('is-target',b.target==='rig');
+ Object.assign(rig,{tabIndex:0,onclick:()=>setTarget('rig'),onkeydown:ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();setTarget('rig')}}});
+ rig.setAttribute('role','button');rig.setAttribute('aria-pressed',String(b.target==='rig'));rig.setAttribute('aria-label','Target the rival rig');
+ if(b.target==='rig')rig.insertAdjacentHTML('beforeend','<em class="target-tag">🎯 TARGET</em>');
+}
 render();

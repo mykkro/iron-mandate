@@ -150,6 +150,36 @@ def scenario_opponent_panel_shows_result(pg):
     check("panel shows repair result", "+4 Hull" in panel, panel)
 
 
+TEST_PART = "[{id:'p1',name:'Test Part',hull:10,max:10,destroyed:false,effect:'none',text:'Test'}]"
+
+
+@scenario
+def scenario_targeting_routes_damage(pg):
+    start(pg, 0, hand=["blast"], power=5)
+    pg.evaluate(f"() => {{ battle.parts = {TEST_PART}; render(); }}")
+    pg.click('[data-target="p1"]')
+    check("clicking a part sets the target", snap(pg)["target"] == "p1")
+    chip = pg.inner_text(".hull-chip.hull-rival")
+    check("sticky chip names the targeted part", "TEST PART" in chip.upper() and "10" in chip, chip)
+    pg.evaluate("() => play(0)")
+    s = snap(pg)
+    check("confetti hits the part, not the rig", s["parts"][0][1] == 5 and s["foe"] == 28, s)
+    pg.evaluate("() => { battle.machines = [{key:'cannon',level:0,used:false,builtTurn:0}]; battle.power = 5; render(); activate(0); }")
+    s = snap(pg)
+    check("overflow damage is lost", s["parts"][0] == ["p1", 0, True] and s["foe"] == 28, s)
+    check("target returns to the rig when the part dies", s["target"] == "rig", s)
+    pg.evaluate("() => setTarget('p1')")
+    check("a destroyed part cannot be targeted", snap(pg)["target"] == "rig")
+
+
+@scenario
+def scenario_rig_target_marker_only_with_parts(pg):
+    start(pg, 0)
+    check("no target tag without parts", pg.query_selector(".target-tag") is None)
+    pg.evaluate(f"() => {{ battle.parts = {TEST_PART}; render(); }}")
+    check("rig shows target tag when parts exist", pg.query_selector(".rival-rig .target-tag") is not None)
+
+
 def main():
     with sync_playwright() as p:
         browser = p.chromium.launch()
