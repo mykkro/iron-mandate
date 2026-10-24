@@ -8,7 +8,7 @@
 
 Open `index.html` in a modern browser. No installation or build step is needed. Google Fonts are optional; system fonts work offline.
 
-- Four rival encounters and seventeen illustrated cards.
+- Eight rival encounters and twenty-six illustrated cards.
 - Machine upgrades, crew abilities, and a customizable 15-card deck.
 - Jegor Kokotovič, the space garbageman, and his faithful robot Bobo.
 - Portrait phone controls with swipeable cards and larger detail panels.
@@ -16,7 +16,7 @@ Open `index.html` in a modern browser. No installation or build step is needed. 
 - Original sound effects with saved mute and volume controls.
 - Opponent actions shown one at a time, with effects and turn history.
 
-Your collection, deck, and preferences are saved in your browser. Battles restart when the page reloads. Opponents use escalating attack patterns in this prototype.
+Your collection, deck, and preferences are saved in your browser. Battles restart when the page reloads. Each rival shows its next three actions; later rivals steal Ore, jam and dissolve machines, clog your deck with Red Tape, and have parts you can target and destroy.
 
 ## Project layout
 
@@ -31,7 +31,7 @@ assets/screenshots/    README screenshots
 tools/                 Sound-generation utility
 ```
 
-Core cards and opponents are defined in `js/game.js`; Jegor and Bobo are in `js/salvage-crew.js`. Card presentation is in `js/card-layout.js` and `css/card-layout.css`.
+Core cards are defined in `js/game.js`, later cards in `js/new-cards.js`, and Jegor and Bobo in `js/salvage-crew.js`. Rivals, their action scripts and parts are in `js/rivals.js`. Run `python tools/check_rivals.py` (needs Playwright) to check rival and card rules in a headless browser. Card presentation is in `js/card-layout.js` and `css/card-layout.css`.
 
 Regenerate the sound effects with `python tools/generate_sounds.py` (Python standard library only). This replaces the generated WAV files in `assets/audio/`.
 
@@ -41,4 +41,4 @@ Regenerate the sound effects with `python tools/generate_sounds.py` (Python stan
 
 Card rarity tiers are Common, Uncommon, Rare, Unique, and Legendary, defined in `js/rarity.js`. Rarity is shown with a label, rank, and frame accent. It does not change costs or the current two-copy deck limit.
 
-The active art set is in `assets/images/handdrawn/`: ink contours, cross-hatching, and watercolor washes on textured paper. The game loads the JPG copies; the full-quality source PNGs are kept locally but git-ignored (regenerate the JPGs with `python tools/convert_handdrawn.py`). Earlier painted versions remain in `assets/images/` as backups. Resource icons are in `assets/icons/`.
+The active art set is in `assets/images/handdrawn/`: ink contours, cross-hatching, and watercolor washes on textured paper. The game loads the JPG copies; the full-quality source PNGs are kept locally but git-ignored (regenerate the JPGs with `python tools/convert_handdrawn.py`). Earlier painted versions remain in `assets/images/` as backups. Resource icons are in `assets/icons/`. Cards or rivals whose JPG doesn't exist yet show their emoji instead; add `<id>.png` to `assets/images/handdrawn/` and run the conversion script to give them art.
